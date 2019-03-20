@@ -1,0 +1,8 @@
+## cas d'utilisation 
+
+https://yuml.me/diagram/nofunky/usecase/draw
+
+[Utilisateur]-(Proposer un trajet), [Utilisateur]-(Voir un profil), [Utilisateur]-(Rechercher un covoiturage), 
+[Utilisateur]-(Inscription), [Administrateur]-(Supprimer compte), [Administrateur]-(Supprimer Covoiturage), 
+(Reserver un covoiturage)<(Authentifier), (Supprimer compte)<(Authentifier), (Supprimer Covoiturage)<(Authentifier),
+(Rechercher un covoiturage)>(Reserver un covoiturage), (proposer un trajet)<(Authentifier),  [Administrateur]-(Voir un profil)
