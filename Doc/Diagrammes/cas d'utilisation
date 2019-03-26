@@ -2,8 +2,15 @@ https://yuml.me/diagram/nofunky/usecase/draw
 
 
 [Utilisateur]-(Proposer un covoiturage), (Proposer un covoiturage)>(Authentifier),
+[Utilisateur]-(Gerer un covoiturage),
+ (Gerer un covoiturage)>(Proposer un covoiturage),
 [Utilisateur]-(Inscription),
 [Utilisateur]-(Rechercher un covoiturage), (Rechercher un covoiturage)<(Reserver),(Reserver)>(Authentifier),
+[Utilisateur]-(Annuler une reservation), (Annuler une reservation)>(Reserver),
+[Utilisateur]-(Noter un covoiturage), (Noter un covoiturage)>(Reserver),
 [Utilisateur]-(Voir un profil), (Voir un profil)>(Authentifier),
+
+
 [Administrateur]-(Supprimer un compte), (Supprimer un compte)>(Authentifier),
 [Administrateur]-(Supprimer un trajet), (Supprimer un trajet)>(Authentifier),
+
