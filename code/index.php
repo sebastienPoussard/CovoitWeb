@@ -1,8 +1,8 @@
 <?php
 
-$test = "test php";
+$test = "php fonctionne";
 echo $test;
 
 ?>
-
-test html
+<br>
+HTML aussi
