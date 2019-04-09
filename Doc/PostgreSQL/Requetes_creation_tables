@@ -1,0 +1,56 @@
+### création de table voiture
+CREATE TABLE voiture (
+	matricule varchar(7) constraint PK_VOITURE primary key,
+	marque VARCHAR(50),
+	modele VARCHAR(50),
+	maxBagages int,
+	maxPassagers int
+);
+
+### création de table utilisateur
+CREATE TABLE utilisateur(
+	mail VARCHAR(100) constraint PK_UTILISATEUR primary key,
+	mdp VARCHAR(50),
+	nomUser VARCHAR(50),
+	prenomUser VARCHAR(50),
+	estBan boolean
+);
+
+### ajout clé étrangere propriétaire de la voiture
+ALTER TABLE voiture
+	ADD COLUMN proprietaire VARCHAR(100) references utilisateur(mail);
+
+### ajout table trajet
+CREATE TABLE trajet (
+	idTrajet SERIAL constraint PK_TRAJET PRIMARY KEY,
+	pointDepart VARCHAR(200),
+	pointArrivee VARCHAR(200),
+	dateHeureDepart TIMESTAMP,
+	estAnnule BOOLEAN,
+	conducteur VARCHAR(100) REFERENCES utilisateur(mail)
+);
+
+### création de la table de reservation
+CREATE TABLE reservation (
+	mail VARCHAR(100) REFERENCES utilisateur(mail),
+	idTrajet int REFERENCES trajet(idTrajet),
+	estAccepte boolean default false,
+	estValide boolean default true,
+	PRIMARY KEY(mail, idTrajet)
+);
+
+### création de la table de commentaires
+CREATE TABLE commentaire (
+	idCommentaire SERIAL CONSTRAINT PK_COMMENTAIRE PRIMARY KEY,
+	dateCommentaire DATE,
+	note int,
+	contenu VARCHAR(1000),
+	auteur VARCHAR(100) REFERENCES utilisateur(mail)
+);
+
+### ajouter le trajet corresdpondant au commentaire et le destinataire
+ALTER TABLE commentaire
+	ADD COLUMN utilisateurCible VARCHAR(100) REFERENCES utilisateur(mail),
+	ADD COLUMN trajetCible INT REFERENCES trajet(idTrajet);
+
+

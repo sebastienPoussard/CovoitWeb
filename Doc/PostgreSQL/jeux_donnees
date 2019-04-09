@@ -1,0 +1,40 @@
+### UTILISATEURS ###
+
+INSERT INTO utilisateur VALUES 
+	('jean@hotmail.Fr','jean1313','petit','jean',false),
+	('francois@hotmail.Fr','fr12ps','damien','francois',false),
+	('benoit@gmail.fr','password','jacquin','benois',false),
+	('sebastien.poussard@protonmail.ch','password','poussard','sébastien',false),
+	('badr@hentai.fr','bibleBlack4ever','riouch','badr',false),
+	('jojo@gmail.fr.Fr','adventure','bizarre','joel',false),
+	('troll@hotmail.fr','ih8world','Marigan','Jean-Baptiste',true),
+	('herhes@gmail.fr','letsdoit','aziz','benoit',true);
+	
+### VOITURE ###
+INSERT INTO voiture VALUES 
+	('AA737BB','Alfa-Romeo','Espace',6,3,'jean@hotmail.Fr'),
+	('CE130CX','Ford','Focus',8,4,'sebastien.poussard@protonmail.ch'),
+	('FA000KE','CX2','Lamborghini',2,1,'sebastien.poussard@protonmail.ch'),
+	('AZ123FE','Citroen','DSX2',2,3,'jojo@gmail.fr.Fr'),
+	('AL444AH','Renault','106 Kid',0,7,'badr@hentai.fr');
+
+### Trajet ###
+INSERT INTO trajet(pointdepart,pointarrivee,dateheuredepart,estannule,conducteur) VALUES
+		('Toulouse','Paris','2020-03-22 19:10:25-07',false,'sebastien.poussard@protonmail.ch'),
+		('Toulouse','Nice','2020-05-10 20:00:00-00',false,'badr@hentai.fr'),
+		('Toulouse','Paris','2016-03-20 19:10:25-07',false,'sebastien.poussard@protonmail.ch');
+
+### RESERVATION 
+INSERT INTO reservation VALUES
+	('francois@hotmail.Fr',1,false,true),
+	('benoit@gmail.fr',1,true,true),
+	('jean@hotmail.Fr',1,true,false),
+	('troll@hotmail.fr',1,false,false),
+	('benoit@gmail.fr',3,true,true);
+
+### COMMENTAIRE ###
+INSERT INTO commentaire(datecommentaire,note,contenu,auteur,utilisateurcible,trajetcible) VALUES
+	('2017-06-16',4,'trajet agreable lore ipsum','benoit@gmail.fr','sebastien.poussard@protonmail.ch',3);
+
+
+
