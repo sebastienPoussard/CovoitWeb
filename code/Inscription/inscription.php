@@ -13,6 +13,7 @@ $motDePasse=$_POST['mdp'];
 $verifMotDePasse=$_POST['mdpVerif'];
 $descriptionUser=$_POST['description'];
 
+
 $verifIdentifiant=$bdd->prepare('SELECT COUNT(*) AS nbr FROM utilisateur WHERE mail=:identifiant');
 $verifIdentifiant->bindValue(':identifiant',$IdentifiantMail, PDO::PARAM_STR);
 $verifIdentifiant->execute();
@@ -26,10 +27,12 @@ $verifIdentifiant->closeCursor();
         echo "Ce n'est pas une adresse mail";
     }
 
-    if ($motDePasse !== $verifMotDePasse) {
-        echo "vos mots de passe sont différents";
-    } else {
+    if ($motDePasse == $verifMotDePasse) {
         $cryptageMotDePasse = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+    }
+    else {
+        echo "vos mots de passe sont différents";
+
     }
 
     if (!empty($_FILES['avatar'])) {
