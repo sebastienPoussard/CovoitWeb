@@ -7,10 +7,9 @@
  */
 include '../covoitPDO.php';
 $reqInfos= $bdd->prepare('SELECT mail, mdp FROM utilisateur WHERE mail=:identifiant');
-$reqInfos->execute(array(
-    'identifiant'=> $user));
-$reqResultat=$reqInfos->fetch();
-
+$reqInfos->bindValue(':mail',$_POST['identifant'], PDO::PARAM_STR);
+$reqInfos->execute();
+//$reqResultat=$reqInfos->fetch();
 $verificationMdp = password_verify($_POST['mdp'],$reqResultat['mdp']);
 if(!$reqResultat)
 {
