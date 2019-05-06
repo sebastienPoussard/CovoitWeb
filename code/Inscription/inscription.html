@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="./inscription.css" rel="stylesheet">
+    <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
     <meta charset="UTF-8">
     <title>Inscription</title>
 </head>
 <body>
-<h1>Bienvenue sur QuietCar le covoit' sans blabla, Inscrivez vous!</h1>
-<form method="post" action="inscription.php" enctype="multipart/form-data" >
 
-    <p>Photo de profil: <input type="file" name="avatar" id="avatar"></p>
-    <p>Nom: <input type="text" name="nomuser" placeholder="votre nom" required></p>
-    <p>Prenom: <input type="text" name="prenomuser" placeholder="votre prenom" required></p>
-    <p>Identifiant: <input type="email" name="mail" placeholder="identifiant@mail.fr" required></p>
-    <p>Mot de passe: <input type="password" name="mdp" placeholder="mot de passe" required> </p>
-    <p>Confirmez votre mot de passe: <input type="password" name="mdpVerif" placeholder="mot de passe" required></p>
-    <p>Ajoutez une description: <input type="text" name="description" placeholder="Décrivez vous"></p>
-    <input type="submit" value="Je m'inscris">
-</form>
+    <div class="container-fluid d-flex flex-column align-items-center">
 
+        <div class="row">
+            <h1>Bienvenue sur QuietCar le covoit' sans blabla, Inscrivez vous!</h1>
+        </div>
+
+        <div class="row">
+            <form method="post" action="inscription.php" enctype="multipart/form-data" class="col-10 offset-1">
+
+                <p>Photo de profil: <input type="image"class="btn btn-default btn-circle"name="avatar"></p>
+                <p>Nom: <input type="text" name="nomuser" placeholder="votre nom" required class="form-control"></p>
+                <p>Prenom: <input type="text" name="prenomuser" placeholder="votre prenom" required class="form-control"></p>
+                <p>Identifiant: <input type="email" name="mail" placeholder="identifiant@mail.fr" required class="form-control"></p>
+                <p>Mot de passe: <input type="password" name="mdp" placeholder="mot de passe" required class="form-control"></p>
+                <p>Confirmez votre mot de passe: <input type="password" name="mdpVerif" placeholder="mot de passe" required class="form-control"></p>
+                <p>Ajoutez une description: <textarea type="text" name="description" placeholder="Décrivez vous" class="form-control"></textarea></p>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-lg btn-info" value="Je m'inscris !" id="button">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -7,12 +7,12 @@
  */
 include '../covoitPDO.php';
 $reqInfos= $bdd->prepare('SELECT mail, mdp FROM utilisateur WHERE mail=:identifiant');
-$reqInfos->bindValue(':mail',$_POST['identifant'], PDO::PARAM_STR);
+$reqInfos->bindValue(':identifiant',$_POST['identifiant'], PDO::PARAM_STR);
 $reqInfos->execute();
-//$reqResultat=$reqInfos->fetch();
+$reqResultat=$reqInfos->fetch();
 $verificationMdp = password_verify($_POST['mdp'],$reqResultat['mdp']);
-if(!$reqResultat)
-{
+
+if(!$reqResultat) {
     echo 'votre mot de passe est erroné';
 }
 else
