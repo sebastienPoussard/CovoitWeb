@@ -48,6 +48,6 @@ $verifIdentifiant->execute(
         'prenomuser'=>$prenomUser,
         'mail'=>$IdentifiantMail,
         'mdp'=>$cryptageMotDePasse,
-       // 'description'=>$descriptionUser
-)
+       'description'=>$descriptionUser)
+
 );
