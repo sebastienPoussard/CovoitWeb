@@ -21,6 +21,7 @@ else
         session_start();
         $_SESSION['identifiant']=$reqResultat['IDmail'];
         echo'vous êtes connecté!';
+        include '../index.php';
     }
     else{
         echo 'identification erronée!';

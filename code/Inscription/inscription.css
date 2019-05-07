@@ -43,9 +43,9 @@ img{
     width: 20%;
     height: 20%;
 }
-input[type=password],input[type=email],input[type=text],textarea[type=text]{
-    width: 60%;
-}
-input[id=nom],input[id=prenom]{
-    width: 165%;
+form{
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #113F67;
+
 }

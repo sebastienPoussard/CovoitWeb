@@ -1,0 +1,40 @@
+body {
+    background-image: url("../img/img_fond_80.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: 100vh; /* 100% de la taille de l'écran de l'utilisateur */
+}
+#buttonI,#buttonCO {
+    background-color: #113F67;
+    border-color:#113F67 ;
+    margin-left: auto;
+    margin-right: auto;
+}
+img{
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    height: 20%;
+}
+@font-face {
+    font-family: 'Helvetica'; /*a name to be used later*/
+    src: local('../css/Helvetica');/*URL to font*/
+}
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: Helvetica, sans-serif;
+
+}
+h1 {
+    font-size: x-large;
+    text-align: center;
+    color: #113F67;
+    font-weight: bold;
+}
+
+form {
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #113F67;
+}
