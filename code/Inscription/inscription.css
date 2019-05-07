@@ -11,6 +11,8 @@ body {
 h1 {
     font-size: x-large;
     text-align: center;
+    color: #113F67;
+    font-weight: bold;
 }
 
 body {
@@ -26,11 +28,24 @@ body {
     margin-right: auto;
 }
 
-.btn-circle {
-    background-image: url("../img/logoPhotodeProfil.jpg");
-    width: 30px;
-    height: 30px;
-    padding: 50px ;
-    font-size: 12px;
-    border-radius: 50px;
+#avatar {
+
+    overflow:hidden;
+    border-radius:70px;
+    width:120px;
+    height:120px;
+    cursor: pointer;
+
+}
+img{
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    height: 20%;
+}
+input[type=password],input[type=email],input[type=text],textarea[type=text]{
+    width: 60%;
+}
+input[id=nom],input[id=prenom]{
+    width: 165%;
 }
