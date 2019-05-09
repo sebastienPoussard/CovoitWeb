@@ -41,7 +41,7 @@ else {
 
 
 $verifIdentifiant=$bdd->prepare('INSERT INTO utilisateur (mail, mdp, nomuser,             
-        prenomuser) VALUES (:mail, :mdp, :nomuser, :prenomuser)');
+        prenomuser,description) VALUES (:mail, :mdp, :nomuser, :prenomuser,:description)');
 $verifIdentifiant->execute(
     array(
         'nomuser'=>$nomUser,
