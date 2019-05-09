@@ -5,7 +5,7 @@
  * Date: 09/05/19
  * Time: 13:50
  */
-include '../covoitPDO.php';
+include '../modules/cobdd.php';
 $lieuDepart=$_POST['lieuDepart'];
 $lieuArrivee=$_POST['lieuArrivee'];
 $dateDepart=$_POST['dateDepart'];

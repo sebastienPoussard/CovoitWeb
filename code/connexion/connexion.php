@@ -5,7 +5,7 @@
  * Date: 12/04/19
  * Time: 17:01
  */
-include '../covoitPDO.php';
+include '../modules/cobdd.php';
 $reqInfos= $bdd->prepare('SELECT mail, mdp FROM utilisateur WHERE mail=:identifiant');
 $reqInfos->bindValue(':identifiant',$_POST['identifiant'], PDO::PARAM_STR);
 $reqInfos->execute();

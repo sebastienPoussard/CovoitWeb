@@ -5,7 +5,7 @@
  * Date: 01/05/19
  * Time: 15:56
  */
-include '../covoitPDO.php';
+include '../modules/cobdd.php';
 
 $nomUser=$_POST['nomuser'];
 $prenomUser=$_POST['prenomuser'];
