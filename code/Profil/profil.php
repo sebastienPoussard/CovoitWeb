@@ -43,12 +43,12 @@
 
 <table>
     
-    <tr> <td rowspan = 6> <img src=<?php echo "/img/".$mail ?> ></td> </tr>
-    <tr> <td><?php echo $data0['nomUser'].$data0['prenomUser'];?></td> </tr>
-    <tr> <td><?php echo $data1['moynote']?></td> </tr>
-    <tr> <td><?php echo $data2['marque']?></td> </tr>
-    <tr> <td><?php echo $data2['nbdemandes']."trajets proposés" ?></td> </tr>
-    <tr> <td><?php echo $data5['nbtrajet']."trajets demandés"?></td> </tr>
+    <tr> <td rowspan = 6> <img src=<?php echo "/img/".$mail; ?> ></td> </tr>
+    <tr> <td><?php echo $data0['nomUser'].$data0['prenomUser']; ?></td> </tr>
+    <tr> <td><?php echo $data1['moynote']; ?></td> </tr>
+    <tr> <td><?php echo $data2['marque']; ?></td> </tr>
+    <tr> <td><?php echo $data2['nbdemandes']."trajets proposés";  ?></td> </tr>
+    <tr> <td><?php echo $data5['nbtrajet']."trajets demandés"; ?></td> </tr>
     
 </table>
 
@@ -57,8 +57,8 @@ while($data5=$tabreq[5]->fetch())
 {?>
 <table>
 
-    <tr><td><?php $data5['pointDepart']?></td><td>-></td><td><?php $data5['pointArrivee']?></td></tr>
-    <tr><td colspan=3><?php $data5['dateHeureDepart']?></td></tr>
+    <tr><td><?php $data5['pointDepart']; ?></td><td>-></td><td><?php $data5['pointArrivee']; ?></td></tr>
+    <tr><td colspan=3><?php $data5['dateHeureDepart']; ?></td></tr>
 
 </table>
 </body>
