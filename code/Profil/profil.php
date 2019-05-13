@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
     <meta charset="UTF-8">
     <title>proposer</title>
-    <?php
+<?php
     include covoitPDO.php;
     // Query
     $tabreq=array('SELECT * FROM utilisateurs WHERE mail = :mail',
@@ -43,7 +43,7 @@
 
 <table>
     
-    <tr> <td rowspan = 6> <img src=<?php "/img/".$mail  ?>></td> </tr>
+    <tr> <td rowspan = 6> <img src=<?php echo "/img/".$mail ?> ></td> </tr>
     <tr> <td><?php echo $data0['nomUser'].$data0['prenomUser'];?></td> </tr>
     <tr> <td><?php echo $data1['moynote']?></td> </tr>
     <tr> <td><?php echo $data2['marque']?></td> </tr>
