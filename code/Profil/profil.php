@@ -17,7 +17,7 @@
 
     $tabResult = array();
     // Prepare and execute the query
-    for($i=0;i<=5;i++)
+    for($i=0;$i<=5;$i++)
     {
         $isAuth = $link->prepare($tabreq[$i]);
         $isAuth->execute(
