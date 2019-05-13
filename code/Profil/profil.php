@@ -59,6 +59,9 @@ while($data5=$tabreq[5]->fetch())
 
     <tr><td><?php $data5['pointDepart']; ?></td><td>-></td><td><?php $data5['pointArrivee']; ?></td></tr>
     <tr><td colspan=3><?php $data5['dateHeureDepart']; ?></td></tr>
+<?php
+} 
+?>
 
 </table>
 </body>
