@@ -1,0 +1,26 @@
+<div class="container-fluid" id="proposer">
+  <div class="text-center">
+    <h2>Proposer</h2>
+  </div>
+  <form method="post" action="confirmationcovoiturage.php" enctype="multipart/form-data">
+    <p><input type="text" name="depart" placeholder="De:"></p>
+    <p><input type="text" name="arrivee" placeholder="à"></p>
+    <p><input type="datetime-local" name="dateheuredepart"></p>
+    <label for="nbbagages" >vous pouvez transporter : </label>
+    <select type="select" name="nbbagages">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+    </select>
+    <div class="p-3 text-center ml-3">
+      <input type="submit" class="btn btn-info" name="valider" value="Proposer" id="button"> </td> </tr>
+    </div>
+  </form>
+</div>
