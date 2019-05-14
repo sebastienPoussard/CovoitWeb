@@ -25,5 +25,5 @@ else if (!in_array($verifExtension, $ext)) {
     echo "type de fichier non suporté";
 }
 else {
-    move_uploaded_file($avatar['tmp_name'],"../user/" . $avatar['name']);
+    move_uploaded_file($avatar['tmp_name'],"../user/" . $_SESSION['identifiant'] . "." . $verifExtension);
 }
