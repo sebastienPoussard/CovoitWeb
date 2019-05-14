@@ -6,7 +6,6 @@
  * Time: 15:56
  */
 include '../modules/cobdd.php';
-
 $nomUser=$_POST['nomuser'];
 $prenomUser=$_POST['prenomuser'];
 $IdentifiantMail=$_POST['mail'];
@@ -40,14 +39,15 @@ else {
 }
 
 
-$verifIdentifiant=$bdd->prepare('INSERT INTO utilisateur (mail, mdp, nomuser,             
-        prenomuser,description) VALUES (:mail, :mdp, :nomuser, :prenomuser,:description)');
-$verifIdentifiant->execute(
-    array(
-        'nomuser'=>$nomUser,
-        'prenomuser'=>$prenomUser,
-        'mail'=>$IdentifiantMail,
-        'mdp'=>$cryptageMotDePasse,
-       'description'=>$descriptionUser)
+$verifIdentifiant=$bdd->prepare('INSERT INTO utilisateur (mail, mdp, nomuser,
+        prenomuser, estban, description) VALUES (:mail, :mdp, :nomuser, :prenomuser, :estban, :description)');
 
-);
+$value = $verifIdentifiant->execute(
+    array(
+      'mail'=>$IdentifiantMail,
+      'mdp'=>$cryptageMotDePasse,
+      'nomuser'=>$nomUser,
+      'prenomuser'=>$prenomUser,
+      'estban'=>"FALSE",
+      'description'=>$descriptionUser));
+?>
