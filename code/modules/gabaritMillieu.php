@@ -2,7 +2,6 @@
 <body>
   <?php
   require $_SERVER["DOCUMENT_ROOT"].'/modules/cobdd.php';
-  require $_SERVER["DOCUMENT_ROOT"].'/modules/verification_connexion.php';
   require $_SERVER["DOCUMENT_ROOT"].'/modules/header.php';
    ?>
   <div class="row" id="bg-img">

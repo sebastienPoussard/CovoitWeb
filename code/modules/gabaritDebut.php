@@ -1,3 +1,4 @@
+<?php   require $_SERVER["DOCUMENT_ROOT"].'/modules/verification_connexion.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

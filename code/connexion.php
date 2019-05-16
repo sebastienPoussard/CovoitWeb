@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./connexion.css">
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="./connexion.css" rel="stylesheet">
-    <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" href="/css/connexion.css">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/connexion.css" rel="stylesheet">
+    <link rel="stylesheet" href="/open-iconic/font/css/open-iconic-bootstrap.css">
     <title>QuietCar, le covoit sans blabla</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
         <img src="../img/logo.png" alt="logoQuietCar">
     </div>
     <div class="row mx-auto my-3 d-flex align-items-center justify-content-center">
-        <form method="post" action="connexion.php" class="col-sm-5 p-3">
+        <form method="post" action="connecter_utilisateur.php" class="col-sm-5 p-3">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="row">

@@ -3,12 +3,11 @@
     $req='SELECT * FROM Voiture WHERE proprietaire = :mail';
     // preparation et execution de la requete
     $isAuth = $bdd->prepare($req);
-    $isAuth->execute(
+    $Result = $isAuth->execute(
         array(
-            'mail' => $mail
+            'mail' => $_SESSION['identifiant']
         )
     );
-    $Result = $isAuth;
 ?>
 <div class="container-fluid" id="proposer">
   <div class="text-center">
