@@ -1,3 +1,17 @@
+<?php
+    //connection a la bdd
+    include(connectionPDO.php);
+    //preparation de la requete
+    $req='SELECT * FROM Voiture WHERE mail = :mail';
+    // preparation et execution de la requete
+    $isAuth = $link->prepare($req);
+    $isAuth->execute(
+        array(
+            'mail' => $mail
+        )
+    );
+    $Result = $isAuth;
+?>
 <div class="container-fluid" id="proposer">
   <div class="text-center">
     <h2>Proposer</h2>
@@ -19,6 +33,16 @@
       <option value="7">7</option>
       <option value="8">8</option>
       <option value="9">9</option>
+    </select>
+      <label for="choixvoiture" >vous utiliserez : </label>
+    <select type="select" name="choixvoiture">
+      <?php
+            //boucle, pour chaque voiture, ajouter une option
+            while($data=$Result->fetch())
+            {
+                echo "<option value=\" ".$data['marque']." \" >".$data['marque']."</option>"
+            }
+        ?>
     </select>
     <div class="p-3 text-center ml-3">
       <input type="submit" class="btn btn-info" name="valider" value="Proposer" id="button">
