@@ -10,10 +10,10 @@
     // Query
     $tabreq=array('SELECT * FROM utilisateurs WHERE mail = :mail',
                   'SELECT avg(note) as moynote FROM Commentaire WHERE mail = :mail',
-                  'SELECT marque FROM voiture WHERE mail? = :mail',
-                  'SELECT count(IDTrajet) as nbdemandes FROM reserver WHERE mail? = :mail',
-                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE mail? = :mail',
-                  'SELECT * FROM Trajet WHERE mail? = :mail');
+                  'SELECT marque FROM voiture WHERE mail = :mail',
+                  'SELECT count(IDTrajet) as nbdemandes FROM reserver WHERE mail = :mail',
+                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE mail = :mail',
+                  'SELECT * FROM Trajet WHERE mail = :mail');
 
     $tabResult = array();
     // Prepare and execute the query
