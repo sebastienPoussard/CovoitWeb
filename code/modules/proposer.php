@@ -1,6 +1,6 @@
 <?php
     //preparation de la requete
-    $req='SELECT * FROM Voiture WHERE mail = :mail';
+    $req='SELECT * FROM Voiture WHERE proprietaire = :mail';
     // preparation et execution de la requete
     $isAuth = $bdd->prepare($req);
     $isAuth->execute(
@@ -38,7 +38,8 @@
             //boucle, pour chaque voiture, ajouter une option
             while($data=$Result->fetch())
             {
-                echo "<option value=\" ".$data['marque']." \" >".$data['marque']."</option>";
+                $marque=$data['marque'];
+                echo "<option value=\" ".$marque." \" >".$marque."</option>";
             }
         ?>
     </select>
