@@ -21,9 +21,24 @@ h2 {
     color: #226597;
     font-weight: bold;
 }
-form{
+form , #border{
     border-radius: 50px;
     border-style: solid;
     border-color: #113F67;
 
+}
+#avatar {
+
+    overflow:hidden;
+    border-radius:70px;
+    width:120px;
+    height:120px;
+    cursor: pointer;
+
+}
+#logo {
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    height: 20%;
 }
