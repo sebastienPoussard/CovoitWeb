@@ -1,7 +1,7 @@
 </div>
 <div class="col-lg-2">
   <!-- colonne de droite pour proposer un trajet -->
-  <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/proposer.html'; ?>
+  <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/proposer.php'; ?>
 </div>
 </div>
 <!-- js -->

@@ -1,10 +1,8 @@
 <?php
-    //connection a la bdd
-    include(connectionPDO.php);
     //preparation de la requete
     $req='SELECT * FROM Voiture WHERE mail = :mail';
     // preparation et execution de la requete
-    $isAuth = $link->prepare($req);
+    $isAuth = $bdd->prepare($req);
     $isAuth->execute(
         array(
             'mail' => $mail
