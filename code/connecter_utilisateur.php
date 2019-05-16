@@ -31,8 +31,11 @@ if($reqResultat) {
 <?php
 // afficher un message à l'utilisateur pour qu'il sache s'il est connecté ou non
 if (!$reqResultat) {
-  echo '<p class="text-center">Cette utilisateur n\'existe pas</p>';
-  echo '<button type="button" class="btn btn-success">Je m\'inscrit</button>'
+  echo '<div class="text-center">';
+  echo '<p>Cette utilisateur n\'existe pas</p>';
+  $chemin = '/inscription.html';
+  echo '<a href='.$chemin.' class="btn btn-success">S\'inscrire !</a>';
+  echo '</div>';
 } else {
   echo '<p class="text-center">Vous êtes maintenant connecté !</p>';
 }

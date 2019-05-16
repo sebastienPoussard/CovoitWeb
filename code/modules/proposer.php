@@ -1,14 +1,3 @@
-<?php
-    //preparation de la requete
-    $req='SELECT * FROM Voiture WHERE proprietaire = :mail';
-    // preparation et execution de la requete
-    $isAuth = $bdd->prepare($req);
-    $Result = $isAuth->execute(
-        array(
-            'mail' => $_SESSION['identifiant']
-        )
-    );
-?>
 <div class="container-fluid" id="proposer">
   <div class="text-center">
     <h2>Proposer</h2>
@@ -33,15 +22,22 @@
     </select>
       <label for="choixvoiture" >vous utiliserez : </label>
     <select type="select" name="choixvoiture">
-      <?php
-            //boucle, pour chaque voiture, ajouter une option
-            while($data=$Result->fetch())
-            {
-                $marque=$data['marque'];
-                echo "<option value=\" ".$marque." \" >".$marque."</option>";
-            }
-        ?>
     </select>
+      <?php
+      //preparation de la requete
+      $req="SELECT * FROM Voiture WHERE proprietaire = :mail";
+      // preparation et execution de la requete
+      $res = $bdd->prepare($req);
+      $res->execute(array('mail' => $_SESSION['identifiant']));
+      //boucle, pour chaque voiture, ajouter une option
+      while($data=$res->fetch())
+      {
+          $marque=$data['marque'];
+          echo "<option value=\" ".$marque." \" >".$marque."</option>";
+      }
+
+      ?>
+
     <div class="p-3 text-center ml-3">
       <input type="submit" class="btn btn-info" name="valider" value="Proposer" id="button">
     </div>

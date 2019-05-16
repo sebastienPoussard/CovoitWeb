@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="./inscription.css" rel="stylesheet">
-    <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/inscription.css" rel="stylesheet">
+    <link rel="stylesheet" href="/open-iconic/font/css/open-iconic-bootstrap.css">
     <meta charset="UTF-8">
     <title>Inscription</title>
 </head>
@@ -18,13 +18,13 @@
     </div>
 
     <div class="row mx-auto my-3 d-flex align-items-center justify-content-center">
-        <form method="post" action="inscription.php" enctype="multipart/form-data" class="col-sm-5 p-3">
+        <form method="post" action="inscription_dun_utilisateur.php" enctype="multipart/form-data" class="col-sm-5 p-3">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-3 m-auto">
                             <label for="img_upload">
-                                <img alt="photo de profil" src="../img/logoPhotodeProfil.png" id="avatar"/>
+                                <img alt="photo de profil" src="/img/logoPhotodeProfil.png" id="avatar"/>
                             </label>
                             <input id="img_upload" type="file" name="avatar" class="d-none">
                         </div>
@@ -56,30 +56,3 @@
     </div>
 </div>
 </body>
-<footer>
-    <div class="footer">
-        <div class="row">
-            <div class="col-lg-3 text-center">
-                <a class="oi oi-envelope-closed" href="mailto:contact@covoit.pouseb.fr">
-                    nous contacter
-                </a>
-            </div>
-            <div class="col-lg-6 text-center">
-                centre
-            </div>
-            <div class="col-lg-3 text-right">
-                <a class="oi oi-code" href="https://github.com/Qlaus">
-                    Badr Riouch
-                </a>
-                <a class="oi oi-code" href="https://github.com/MelieMelie">
-                    Marie-Amélie Mariscalco
-                </a>
-                <a class="oi oi-code" href="https://github.com/sebastienPoussard">
-                    Sébastien Poussard
-                </a>
-            </div>
-
-        </div>
-    </div>
-</footer>
-</html>

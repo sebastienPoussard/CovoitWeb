@@ -29,7 +29,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <label>J'enregistre mon mot de passe</label><input type="checkbox"
+                            <label>Rester connecté</label><input type="checkbox"
                                                                                name="connexionAuto"/><br/>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <input type="submit" class="btn btn-info" value="Je me connecte" id="buttonCO">
-                    <input type="submit" class="btn btn-info" value="Je m'inscris" id="buttonI">
+                    <a href='/inscription.html' class="btn btn-info" id="buttonI">S'inscrire !</a>
                 </div>
             </div>
         </form>
