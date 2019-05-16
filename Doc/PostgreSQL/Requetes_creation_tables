@@ -10,10 +10,11 @@ CREATE TABLE voiture (
 ### création de table utilisateur
 CREATE TABLE utilisateur(
 	mail VARCHAR(100) constraint PK_UTILISATEUR primary key,
-	mdp VARCHAR(50),
+	mdp VARCHAR(100),
 	nomUser VARCHAR(50),
 	prenomUser VARCHAR(50),
-	estBan boolean
+	estBan boolean,
+	description VARCHAR(200)
 );
 
 ### ajout clé étrangere propriétaire de la voiture
