@@ -28,7 +28,8 @@ CREATE TABLE trajet (
 	pointArrivee VARCHAR(200),
 	dateHeureDepart TIMESTAMP,
 	estAnnule BOOLEAN,
-	conducteur VARCHAR(100) REFERENCES utilisateur(mail)
+	conducteur VARCHAR(100) REFERENCES utilisateur(mail),
+	idVoiture VARCHAR(7) REFERENCES voiture(matricule)
 );
 
 ### création de la table de reservation
