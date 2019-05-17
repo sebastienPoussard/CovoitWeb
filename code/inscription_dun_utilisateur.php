@@ -51,6 +51,7 @@ if ($ok) {
         'description'=>$descriptionUser));
 
   require $_SERVER["DOCUMENT_ROOT"].'/avatar.php';
+  var_dump($boolupload);
   // afficher un message de réussite
   echo '<p class="text-center">Votre inscription est terminée vous pouvez m\'intenant vous identifier</p>';
 }
