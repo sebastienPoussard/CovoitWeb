@@ -38,9 +38,6 @@
 </head>
 <body>
 
-
-<?php // on affiche un tableau avec le profil de l'utilisateur ?>
-
 <table>
     
     <tr> <td rowspan = 6> <img src=<?php echo "/img/".$mail; ?> ></td> </tr>
