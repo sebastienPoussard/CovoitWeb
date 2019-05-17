@@ -27,7 +27,17 @@ $nomUtilisateur = $res[0]['prenomuser'];
       <!-- photo de l'utilisateur -->
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img class="rounded" src="/user/avatar.jpg" width="50" height="50">
+          <img class="rounded" src="
+          <?php
+          // afficher la photo de l'utilisateur s'il est authentifié
+          if (isset($_SESSION['identifiant'])) {
+            echo '/user/'.$_SESSION['identifiant'].".jpg";
+          } else {
+            // sinon afficher un logo defaut
+            echo '/img/logoPhotodeProfil.png';
+          }
+          ?>
+          " width="50" height="50">
         </a>
       </li>
       <!-- accès au profil de l'utilisateur -->
