@@ -13,7 +13,7 @@
     // Query
     $req0='SELECT * FROM utilisateur WHERE mail = :mail';
     
-    $req1'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail';
+    $req1='SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail';
     
     $req2='SELECT marque FROM voiture WHERE proprietaire = :mail';
     
