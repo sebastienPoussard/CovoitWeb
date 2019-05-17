@@ -5,7 +5,7 @@
  * Date: 07/05/19
  * Time: 10:21
  */
-
+echo "tesst";
 $avatar=$_FILES['avatar'];
 $cheminDuFichier = $_SERVER["DOCUMENT_ROOT"].'/user/';
 $poid =2000000;

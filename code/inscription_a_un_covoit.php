@@ -7,13 +7,13 @@ if (isset($_POST['idcovoit'])) {
   $req = $bdd->prepare('INSERT INTO reservation VALUES (:mail, :idTrajet, FALSE, TRUE) ;');
   $res = $req->execute(array('mail'=>$_SESSION['identifiant'], 'idTrajet'=>$_POST['idcovoit']));
   if (!$res) {
-    echo "une erreur est survenue à l'ajout dans la base de données";
+    echo '<p class="text-center">une erreur est survenue à l\'ajout dans la base de données</p>';
   } else {
-    echo "votre inscrpiton au covoiturage à été réalisé,
-    vous devez maintenant attendre la validation du conducteur";
+    echo '<p class="text-center">votre inscrpiton au covoiturage à été réalisé,
+    vous devez maintenant attendre la validation du conducteur</p>';
   }
 } else {
-  echo "<p>Aucun covoiturage n'à été séléctionné</p>";
+  echo '<p class="text-center">Aucun covoiturage n\'à été séléctionné</p>';
 }
 
  ?>
