@@ -5,9 +5,8 @@
  * Date: 07/05/19
  * Time: 10:21
  */
-
 $avatar=$_FILES['avatar'];
-$cheminDuFichier='../user/';
+$cheminDuFichier = $_SERVER["DOCUMENT_ROOT"].'/user/';
 $poid =2000000;
 $largeur = 20000;
 $longueur = 20000;
@@ -25,5 +24,5 @@ else if (!in_array($verifExtension, $ext)) {
     echo "type de fichier non suporté";
 }
 else {
-    move_uploaded_file($avatar['tmp_name'],"../user/" . $_POST['mail'] . "." . $verifExtension);
+    $boolupload = move_uploaded_file($avatar['tmp_name'], $_SERVER["DOCUMENT_ROOT"]."/user/" . $_POST['mail'] . "." . $verifExtension);
 }
