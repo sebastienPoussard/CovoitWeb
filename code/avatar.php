@@ -26,5 +26,7 @@ else if (!in_array($verifExtension, $ext)) {
 }
 else {
     $bool = move_uploaded_file($avatar['tmp_name'], $_SERVER["DOCUMENT_ROOT"]."/user/" . $_POST['mail'] . "." . $verifExtension);
+    echo("test : ");
     var_dump($bool);
+
 }
