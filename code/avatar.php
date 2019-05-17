@@ -24,6 +24,11 @@ else if (!in_array($verifExtension, $ext)) {
     echo "type de fichier non suporté";
 }
 else {
-    echo "test xxxxxxxxxxxx";
-    $boolupload = move_uploaded_file($avatar['tmp_name'], $_SERVER["DOCUMENT_ROOT"]."/user/" . $_POST['mail'] . "." . $verifExtension);
+    echo '$avatar["tmp_name"] = ';
+    var_dump($avatar['tmp_name']);
+    echo '<br>';
+    $destination = $_SERVER["DOCUMENT_ROOT"]."/user/" . $_POST['mail'] . "." . $verifExtension;
+    echo '$destination = ';
+    var_dump($destination);
+    $boolupload = move_uploaded_file($avatar['tmp_name'], $destination);
 }
