@@ -6,27 +6,33 @@
     <meta charset="UTF-8">
     <title>proposer</title>
 <?php
+    //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
+        $mail='sebastien.poussard@protonmail.ch';
+    //FIN ATTENTION
     include covoitPDO.php;
     // Query
-    $tabreq=array('SELECT * FROM utilisateurs WHERE mail = :mail',
-                  'SELECT avg(note) as moynote FROM Commentaire WHERE mail = :mail',
-                  'SELECT marque FROM voiture WHERE mail = :mail',
-                  'SELECT count(IDTrajet) as nbdemandes FROM reserver WHERE mail = :mail',
-                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE mail = :mail',
-                  'SELECT * FROM Trajet WHERE mail = :mail');
+    $req0='SELECT * FROM utilisateurs WHERE mail = :mail';
+        
+    $req1='SELECT avg(note) as moynote FROM Commentaire WHERE mail = :mail';
+        
+    $req2='SELECT marque FROM voiture WHERE mail = :mail';
+        
+    $req3='SELECT count(IDTrajet) as nbdemandes FROM reserver WHERE mail = :mail';
+        
+    $req4='SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE mail = :mail';
+        
+    $req5='SELECT * FROM Trajet WHERE mail = :mail';
+        
 
     $tabResult = array();
+
     // Prepare and execute the query
-    for($i=0;$i<=5;$i++)
-    {
-        $isAuth = $link->prepare($tabreq[$i]);
-        $isAuth->execute(
-            array(
-                'mail' => $mail
-           )
-        );
-        $tabResult[$i] = $isAuth;
-    }
+    $isAuth = $link->prepare($req0);
+    $isAuth->execute(
+        array(
+            'mail' => $mail
+        )
+    );
 
     $data0=$tabResult[0]->fetch();
     $data1=$tabResult[1]->fetch();
