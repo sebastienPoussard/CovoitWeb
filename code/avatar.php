@@ -24,5 +24,6 @@ else if (!in_array($verifExtension, $ext)) {
     echo "type de fichier non suporté";
 }
 else {
+    echo "test xxxxxxxxxxxx";
     $boolupload = move_uploaded_file($avatar['tmp_name'], $_SERVER["DOCUMENT_ROOT"]."/user/" . $_POST['mail'] . "." . $verifExtension);
 }
