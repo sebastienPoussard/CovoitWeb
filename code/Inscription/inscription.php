@@ -50,4 +50,7 @@ $value = $verifIdentifiant->execute(
       'prenomuser'=>$prenomUser,
       'estban'=>"FALSE",
       'description'=>$descriptionUser));
+
+include "avatar.php";
+
 ?>
