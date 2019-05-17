@@ -11,18 +11,12 @@
     //FIN ATTENTION
     include covoitPDO.php;
     // Query
-    $req0='SELECT * FROM utilisateurs WHERE mail = :mail';
-        
-    $req1='SELECT avg(note) as moynote FROM Commentaire WHERE mail = :mail';
-        
-    $req2='SELECT marque FROM voiture WHERE mail = :mail';
-        
-    $req3='SELECT count(IDTrajet) as nbdemandes FROM reserver WHERE mail = :mail';
-        
-    $req4='SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE mail = :mail';
-        
-    $req5='SELECT * FROM Trajet WHERE mail = :mail';
-        
+    $tabreq=array('SELECT * FROM utilisateur WHERE mail = :mail',
+                  'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail',
+                  'SELECT marque FROM voiture WHERE proprietaire = :mail',
+                  'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
+                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
+                  'SELECT * FROM Trajet WHERE conducteur = :mail');
 
     $tabResult = array();
 
