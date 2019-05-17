@@ -9,16 +9,23 @@
     //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
         $mail='sebastien.poussard@protonmail.ch';
     //FIN ATTENTION
-    include covoitPDO.php;
+    
     // Query
-    $tabreq=array('SELECT * FROM utilisateur WHERE mail = :mail',
-                  'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail',
-                  'SELECT marque FROM voiture WHERE proprietaire = :mail',
-                  'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
-                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
-                  'SELECT * FROM Trajet WHERE conducteur = :mail');
+    $req0='SELECT * FROM utilisateur WHERE mail = :mail';
+    
+    $req1'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail';
+    
+    $req2='SELECT marque FROM voiture WHERE proprietaire = :mail';
+    
+    $req3='SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail';
+    
+    $req4='SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail';
+    
+    $req5='SELECT * FROM Trajet WHERE conducteur = :mail';
 
     $tabResult = array();
+
+
 
     // Prepare and execute the query
     $isAuth = $link->prepare($req0);
