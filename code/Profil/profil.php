@@ -11,36 +11,29 @@
     //FIN ATTENTION
     
     // Query
-    $req0='SELECT * FROM utilisateur WHERE mail = :mail';
-    
-    $req1'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail';
-    
-    $req2='SELECT marque FROM voiture WHERE proprietaire = :mail';
-    
-    $req3='SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail';
-    
-    $req4='SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail';
-    
-    $req5='SELECT * FROM Trajet WHERE conducteur = :mail';
+    $tabreq=array('SELECT * FROM utilisateur WHERE mail = :mail',
+                  'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail',
+                  'SELECT marque FROM voiture WHERE proprietaire = :mail',
+                  'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
+                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
+                  'SELECT * FROM Trajet WHERE conducteur = :mail');
 
     $tabResult = array();
 
-
-
-    // Prepare and execute the query
-    $isAuth = $link->prepare($req0);
-    $isAuth->execute(
-        array(
-            'mail' => $mail
-        )
-    );
-
-    $data0=$tabResult[0]->fetch();
-    $data1=$tabResult[1]->fetch();
-    $data2=$tabResult[2]->fetch();
-    $data3=$tabResult[3]->fetch();
-    $data4=$tabResult[4]->fetch();
-    $data5=$tabResult[5]->fetch();
+    foreach($tabreq as $req) {
+    
+        // Prepare and execute the query
+        $isAuth = $link->prepare($req);
+        $isAuth->execute(
+            array(
+                'mail' => $mail
+            )
+        );
+        array_push($tabResult, $isAuth->fetchAll());
+    }
+    
+    var_dump($tabResult);
+    
 ?>
 </head>
 <body>
