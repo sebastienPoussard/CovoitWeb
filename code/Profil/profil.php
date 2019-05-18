@@ -1,29 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritDebut.php'; ?>
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
-    <meta charset="UTF-8">
-    <title>proposer</title>
-<?php
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
+    <?php
+
+
     //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
-        $mail='sebastien.poussard@protonmail.ch';
+    $mail = $_SESSION['identifiant'];
     //FIN ATTENTION
-    
+
     // Query
-    $tabreq=array('SELECT * FROM utilisateur WHERE mail = :mail',
-                  'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail',
-                  'SELECT marque FROM voiture WHERE proprietaire = :mail',
-                  'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
-                  'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
-                  'SELECT * FROM Trajet WHERE conducteur = :mail');
+    $tabreq = array('SELECT * FROM utilisateur WHERE mail = :mail',
+        'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail',
+        'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
+        'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
+        'SELECT * FROM Trajet WHERE conducteur = :mail');
+
+    $reqTest= 'SELECT marque FROM voiture WHERE proprietaire = :mail';// Prepare and execute the query
+    $isAuthTest = $bdd->prepare($reqTest);
+    $isAuthTest->execute(
+        array(
+            'mail' => $mail
+        )
+    );
+
 
     $tabResult = array();
 
-    foreach($tabreq as $req) {
-    
+    foreach ($tabreq as $req) {
+
         // Prepare and execute the query
-        $isAuth = $link->prepare($req);
+        $isAuth = $bdd->prepare($req);
         $isAuth->execute(
             array(
                 'mail' => $mail
@@ -31,38 +38,63 @@
         );
         array_push($tabResult, $isAuth->fetchAll());
     }
-    
-    var_dump($tabResult);
-    
-?>
+
+
+    ?>
 </head>
 <body>
 
-<table>
-    
-    <tr> <td rowspan = 6> <img src=<?php echo "/img/".$mail; ?> ></td> </tr>
-    <tr> <td><?php echo $data0['nomUser'].$data0['prenomUser']; ?></td> </tr>
-    <tr> <td><?php echo $data1['moynote']; ?></td> </tr>
-    <tr> <td><?php echo $data2['marque']; ?></td> </tr>
-    <tr> <td><?php echo $data2['nbdemandes']."trajets proposés";  ?></td> </tr>
-    <tr> <td><?php echo $data5['nbtrajet']."trajets demandés"; ?></td> </tr>
-    
-</table>
-
-<?php    // on affiche ses derniers trajets
-while($data5=$tabreq[5]->fetch())
-{
-?>
-    
-<table>
-    <tr><td><?php $data5['pointDepart']; ?></td><td>-></td><td><?php $data5['pointArrivee']; ?></td></tr>
-    <tr><td colspan=3><?php $data5['dateHeureDepart']; ?></td></tr>
-</table>
-    
 <?php
-} 
-?>
+/*
+foreach ($tabResult as $resReq) {
+    //var_dump($resReq);
+    echo "--..---<br>";
+    foreach ($resReq as $field) {
+        echo "<br>..<br>";
+        var_dump($field);
+        //print_r($field);
+    }
+}
+*/
 
+//[n°requete] [0]
 
-</body>
-</html>
+echo "<div class=\"container centered\">";
+    echo "<div class=\"row\">";
+
+        echo "<div class=\"col\">";
+            echo "<table>";
+                echo "<tr><td rowspan=6> <img src=\"../img/logoPhotodeProfil.png\"> </td></tr>";
+
+                echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
+                echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
+                echo "<tr><td>nombre de trajets demandés: ".$tabResult[2][0]['nbdemandes']."</td></tr>";
+                echo "<tr><td>nombre de trajets conduits : ".$tabResult[3][0]['nbtrajet']."</td></tr>";
+
+                echo "<tr><td>voiture(s) : ";
+                while($resultTest=$isAuthTest->fetch())
+                {echo $resultTest['marque'].", ";}
+                echo "</td></tr>";
+            echo "</table>";
+        echo "</div>";
+
+    echo "</div>";
+echo "</div>";
+
+echo "<div class=\"container\">";
+    echo "<div class=\"row\">";
+
+        for($i=0;$i<3;$i++)
+        {if(!empty($tabResult[4][$i]['pointdepart']))
+        {
+                echo "<div class=\"col-4\">";
+                    echo "Covoiturage : ".$tabResult[4][$i]['pointdepart']."->".$tabResult[4][$i]['pointarrivee']."<br>";
+                    echo "le ".$tabResult[4][$i]['dateheuredepart']."<br>";
+                echo "</div>";
+            }
+        }
+    echo "</div>";
+echo "</div>";
+    ?>
+
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritFin.php'; ?>

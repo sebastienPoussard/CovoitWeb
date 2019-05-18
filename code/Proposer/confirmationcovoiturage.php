@@ -1,44 +1,43 @@
-<!DOCTYPE html>
-<html>
-    
-    <head>
-        
-    </head>
-    
-    <body>
-        
-        <?php
-            include covoitPDO.php;
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritDebut.php'; ?>
+<!-- insérer la balise pour utiliser le CSS ici -->
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
+<?php
+        require "../modules/cobdd.php";
+        //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
+        $mail = $_SESSION['identifiant'];
+        //FIN ATTENTION
             // Query
-            $req='SELECT maxPassagers FROM Voiture WHERE mail = :mail';
-            $Result = array();
+            $req=$bdd->prepare('SELECT maxPassagers,maxbagages FROM Voiture WHERE proprietaire = :mail AND modele = :modele');
             // Prepare and execute the query
-            $isAuth = $link->prepare($req);
-            $isAuth->execute(
-                array(
-                    'mail' => $mail
-                )
-            );
-            $Result = $isAuth;
-            $data=$Result->fetch();
+            $res = $req->execute(array('mail' => $mail, 'modele' => $_POST['modele']));
+            $data = $req->fetch();
+            $maxpassagers=$data['maxpassagers']-1;
+            $maxbagages=$data['maxbagages'];
 
-            $idTrajet = uniqid();
+
+
+            $idTrajet = hexdec(uniqid());
             $lieuDepart =$_POST['depart'];
             $lieuArrivee =$_POST['arrivee'];
-            $dateHeureDepart =$_POST['dateheuredepart'];
+            $dateHeureDepart =$_POST['dateHeureDepart'];
             $estAnnule=false;
-            $bdd->exec("INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('$idTrajet','$lieuDepart','$lieuarrivee','$dateHeureDepart','$estAnnule')");
-                        }
-        ?>
-        
-        <table>
-            <tr><td colspan=3>  Trajet du $_POST['dateheuredepart']                       </td></tr>
-            <tr><td>départ</td>             <td>:</td>      <td><?php $_POST['depart']          ?></td></tr>
-            <tr><td> arrivée</td>           <td>:</td>      <td><?php $_POST['arrivee']         ?></td></tr>
-            <tr><td>places</td>             <td>:</td>      <td><?php $data['maxPassagers']     ?></td></tr>
-            <tr><td>limite de bagages</td>  <td>:</td>      <td><?php $_POST['"nbbagages']      ?></td></tr>
+            $voiture=$_POST['modele'];
 
-        </table>
-    
-    </body>
-</html>
+
+        echo "<table>";
+        echo "<tr><td colspan=3>Trajet du $dateHeureDepart</td></tr>";
+        echo "<tr><td>départ</td><td>:</td><td>$lieuDepart</td></tr>";
+        echo "<tr><td>arrivée</td><td>:</td><td>$lieuArrivee</td></tr>";
+        echo "<tr><td>places (passagers)</td><td>:</td><td>$maxpassagers</td></tr>";
+        echo "<tr><td>places (bagages)</td><td>:</td><td>$maxbagages</td></tr>";
+        echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
+        echo "<tr><td><a href=\"../Profil/profil.php\" target=\"_blank\"> <input type=\"button\" value=\"oui\">  </a></td>
+             <td></td><td><a href=\"../modules/proposer.php\" target=\"_blank\"> <input type=\"button\" value=\"non\"> </a></td></tr>";
+        echo "</table>";
+
+            //$bdd->exec("INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('$idTrajet','$lieuDepart','$lieuarrivee','$dateHeureDepart','$estAnnule')");
+                       // }
+       ?>
+
+
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritFin.php'; ?>
