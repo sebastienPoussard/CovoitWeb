@@ -17,12 +17,16 @@
       // preparation et execution de la requete
       $res = $bdd->prepare($req);
       $res->execute(array('mail' => $mail));
-      
+
       //boucle, pour chaque voiture, ajouter une option
       while($data=$res->fetch())
       {
           $modele=$data['modele'];
           echo "<option value=\"$modele\" >".$modele."</option>";
+      }
+      if (!$modele)
+      {
+          echo "<option value=\"novoit\" >".aucune voiture."</option>";
       }
 
       ?>
