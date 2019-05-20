@@ -2,7 +2,6 @@
 <!-- insérer la balise pour utiliser le CSS ici -->
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 <?php
-        require "../modules/cobdd.php";
         //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
         $mail = $_SESSION['identifiant'];
         //FIN ATTENTION
