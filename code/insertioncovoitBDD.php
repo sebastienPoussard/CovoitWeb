@@ -8,13 +8,10 @@
 
 if(isset($_POST['button']))
 {
+    $reqInsert= 'INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('.$_SESSION['$idTrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuarrivee'].','.$_SESSION['$dateHeureDepart'].'';
+    //execute the query
+    $conn->execute($reqInsert);
     header("Location: https://covoit.pouseb.fr/index.php");
 }
-/*
-function insérerCovoitBDD($idTrajet,$lieuDepart,$lieuarrivee,$dateHeureDepart,$estAnnule)
-{
-    $bdd->exec("INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('.$idTrajet.','.$lieuDepart.','.$lieuarrivee.','.$dateHeureDepart.','.$estAnnule.')");
-}
-*/
 
 ?>
