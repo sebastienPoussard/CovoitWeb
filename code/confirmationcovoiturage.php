@@ -31,11 +31,17 @@
         echo "<tr><td>places (bagages)</td><td>:</td><td>$maxbagages</td></tr>";
         echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
 
-        echo "<form method='POST' >";
-        echo "<tr><td><input type=\"submit\" name=\"button\" value=\"oui\"></td>
-             <td></td><td><a href=\"../modules/proposer.php\" target=\"_blank\"> <input type=\"button\" value=\"non\"> </a></td></tr>";
+        echo "<form method='POST' action='insertioncovoitBDD.php'>";
+        echo "<tr><td><input type='submit' name='button' value='oui'></td>
+             <td></td><td><a href='../modules/proposer.php' target='_blank'> <input type='button' value='non'> </a></td></tr>";
         echo "</table>";
         echo "</form>";
+
+        $_SESSION['idtrajet']=$idTrajet;
+        $_SESSION['lieuDepart']=$lieuDepart;
+        $_SESSION['lieuArrivee']=$lieuArrivee;
+        $_SESSION['dateHeureDepart']=$dateHeureDepart;
+
 
         if(isset($_POST['button']))
         {
