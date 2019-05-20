@@ -4,8 +4,6 @@
 
 <?php
 if (isset($_POST['idcovoit'])) {
-  echo "id du covoit selectionné : ".$_POST['idcovoit'];
-  echo "<br>";
   // verifier que le trajet comporte encore des places
   // commencer par chercher le nombre de reservation déjà existante sur ce trajet
   $req = $bdd->prepare('SELECT COUNT(*) FROM reservation WHERE idtrajet = :idTrajet
@@ -13,7 +11,6 @@ if (isset($_POST['idcovoit'])) {
   $req->execute(array('idTrajet'=> $_POST['idcovoit']));
   $res = $req->fetchAll(PDO::FETCH_ASSOC);
   $nbReservation= $res[0]['count'];
-  echo "nb de reservation déjà réalisée sur ce covoit : ".$nbReservation."<br>";
 
   // récuperer le nombre de places sur la voitures qui fait le trajet
   $req = $bdd->prepare('SELECT maxpassagers FROM voiture
@@ -22,7 +19,6 @@ if (isset($_POST['idcovoit'])) {
   $req->execute(array('idTrajet'=> $_POST['idcovoit']));
   $res = $req->fetchAll(PDO::FETCH_ASSOC);
   $nbPassagersMax = $res[0]['maxpassagers'];
-  echo "nb de passagersMax : ".$nbPassagersMax."<br>";
 
   // si le nombre de reservation est inférieur au nombre de passagers que peut
   // transporter la voiture alors effectuer la reservation.
