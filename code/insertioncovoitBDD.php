@@ -8,7 +8,6 @@
  * Date: 20/05/2019
  * Time: 23:04
  */
-var_dump($_SESSION);
 
 
 if(isset($_POST['button']))
