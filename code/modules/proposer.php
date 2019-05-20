@@ -26,7 +26,7 @@
       }
       if (!$modele)
       {
-          echo "<option value=\"novoit\" >".aucune voiture."</option>";
+          echo "<option value=\"novoit\" >aucune voiture </option>";
       }
 
       ?>
