@@ -3,9 +3,7 @@
     <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
     <?php
-
-
-    //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
+    //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST!
     $mail = $_SESSION['identifiant'];
     //FIN ATTENTION
 
