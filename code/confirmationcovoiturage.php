@@ -37,7 +37,10 @@
         echo "</table>";
         echo "</form>";
 
-
+        $_SESSION['idtrajet']=$idTrajet;
+        $_SESSION['lieuDepart']=$lieuDepart;
+        $_SESSION['lieuArrivee']=$lieuArrivee;
+        $_SESSION['dateHeureDepart']=$dateHeureDepart;
 
 
        ?>
