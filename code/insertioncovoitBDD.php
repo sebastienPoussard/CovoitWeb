@@ -1,3 +1,6 @@
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritDebut.php'; ?>
+    <!-- insérer la balise pour utiliser le CSS ici -->
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -15,4 +18,9 @@ if(isset($_POST['button']))
     header("Location: https://covoit.pouseb.fr/index.php");
 }
 */
+
 ?>
+
+<!-- code de la page -->
+
+<?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritFin.php'; ?>
