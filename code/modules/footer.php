@@ -7,17 +7,17 @@
           nous contacter
         </a>
       </div>
-      <div class="col-lg-6 text-center">
-        centre
+      <div class="col-lg-3 text-center">
+        <!-- information au centre ? -->
       </div>
-      <div class="col-lg-3 text-right">
-        <a class="oi oi-code" href="https://github.com/Qlaus">
+      <div class="col-lg-6 text-right">
+        <a class="oi oi-code d-inline-block" href="https://github.com/Qlaus">
           Badr Riouch
         </a>
-        <a class="oi oi-code" href="https://github.com/MelieMelie">
+        <a class="oi oi-code d-inline-block" href="https://github.com/MelieMelie">
           Marie-Amélie Mariscalco
         </a>
-        <a class="oi oi-code" href="https://github.com/sebastienPoussard">
+        <a class="oi oi-code d-inline" href="https://github.com/sebastienPoussard">
           Sébastien Poussard
         </a>
       </div>
