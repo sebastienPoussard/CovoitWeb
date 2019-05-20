@@ -8,7 +8,7 @@
 
 if(isset($_POST['button']))
 {
-    header('Location=/index.php');
+    header("Location: https://covoit.pouseb.fr/index.php/");
 }
 /*
 function insérerCovoitBDD($idTrajet,$lieuDepart,$lieuarrivee,$dateHeureDepart,$estAnnule)

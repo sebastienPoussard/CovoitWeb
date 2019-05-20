@@ -43,16 +43,6 @@
         $_SESSION['dateHeureDepart']=$dateHeureDepart;
 
 
-        if(isset($_POST['button']))
-        {
-            header("Location: https://covoit.pouseb.fr/index.php/");
-        }
-        function insérerCovoitBDD($idTrajet,$lieuDepart,$lieuarrivee,$dateHeureDepart,$estAnnule)
-        {
-            $bdd->exec("INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('.$idTrajet.','.$lieuDepart.','.$lieuarrivee.','.$dateHeureDepart.','.$estAnnule.')");
-        }
-
-
        ?>
 
 
