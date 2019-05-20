@@ -31,6 +31,10 @@ if ($_SESSION['identifiant']) {
     echo '<br>';
     echo 'Immatriculation du véhicule : '.$res2[0]['idvoiture'];
     echo '<br><br>';
+    echo '<form class="" action="mes_reservations.php" method="post">';
+    echo '    <input type="text" name="idtrajet" value="'.$trajet['idtrajet'].'" hidden>';
+    echo '    <input type="submit" name="" value="Annuler ma participation">';
+    echo '</form>';
 
   }
 } else {
