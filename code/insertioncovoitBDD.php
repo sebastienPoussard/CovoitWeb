@@ -12,7 +12,7 @@
 
 if(isset($_POST['button']))
 {
-    $reqTest= 'INSERT INTO Trajet(idtrajet , pointdepart , pointarrivee , dateheuredepart, conducteur) VALUES(:idtrajet , :pointdepart , :pointarrivee , :dateheuredepart, :conducteur)';
+    $reqTest= 'INSERT INTO Trajet(idtrajet , pointdepart , pointarrivee , dateheuredepart, estannule, conducteur) VALUES(:idtrajet , :pointdepart , :pointarrivee , :dateheuredepart, false, :conducteur)';
     //'.$_SESSION['$idtrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuArrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')');
 
     // Prepare and execute the query
@@ -26,7 +26,7 @@ if(isset($_POST['button']))
             'conducteur' => $_SESSION['identifiant']
         )
     );
-    header("Location: https://covoit.pouseb.fr/index.php");
+    echo "votre covoiturage a bien été enregistré!";
 }
 
 
