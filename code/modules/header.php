@@ -44,13 +44,13 @@ $nomUtilisateur = $res[0]['prenomuser'];
           echo '<li class="nav-item dropdown">';
           echo '  <a class="nav-link dropdown-toggle oi oi-person text-primary pt-3" href="#" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-          echo $nomUtilisateur;
+          echo ' '.$nomUtilisateur;
           echo ' </a>';
           echo '  <div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-          echo '    <a class="dropdown-item text-primary" href="#">Mes reservations</a>';
-          echo '    <a class="dropdown-item text-primary" href="#">Mes trajets</a>';
+          echo '    <a class="dropdown-item text-primary" href="/mes_reservations.php">Mes reservations</a>';
+          echo '    <a class="dropdown-item text-primary" href="/mes_trajets_proposes.php">Mes trajets proposés</a>';
           echo '  <div class="dropdown-divider"></div>';
-          echo '    <a class="dropdown-item text-primary" href="#">Mon profil</a>';
+          echo '    <a class="dropdown-item text-primary" href="mon_profil.php">Mon profil</a>';
           echo '  </div>';
           echo '</li>';
         }
