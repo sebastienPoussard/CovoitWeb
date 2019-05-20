@@ -30,11 +30,14 @@
         echo "<tr><td>places (passagers)</td><td>:</td><td>$maxpassagers</td></tr>";
         echo "<tr><td>places (bagages)</td><td>:</td><td>$maxbagages</td></tr>";
         echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
-        echo "<tr><td><input type=\"button\" value=\"oui\"></td>
+
+        echo "<form method='POST' >";
+        echo "<tr><td><input type=\"submit\" name=\"button\" value=\"oui\"></td>
              <td></td><td><a href=\"../modules/proposer.php\" target=\"_blank\"> <input type=\"button\" value=\"non\"> </a></td></tr>";
         echo "</table>";
+        echo "</form>";
 
-        if(isset($_POST['oui']))
+        if(isset($_POST['button']))
         {
             header('Location=/index.php');
         }
