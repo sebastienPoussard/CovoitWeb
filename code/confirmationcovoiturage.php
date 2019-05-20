@@ -15,18 +15,18 @@
 
 
 
-            $_SESSION['idtrajet']= hexdec(uniqid());
-            $_SESSION['lieuDepart']=$_POST['depart'];
-            $_SESSION['lieuArrivee']=$_POST['arrivee'];
-            $_SESSION['dateHeureDepart']=$_POST['dateHeureDepart'];
+            $idTrajet = hexdec(uniqid());
+            $lieuDepart =$_POST['depart'];
+            $lieuArrivee =$_POST['arrivee'];
+            $dateHeureDepart =$_POST['dateHeureDepart'];
             $estAnnule=false;
             $voiture=$_POST['modele'];
 
 
         echo "<table>";
-        echo "<tr><td colspan=3>Trajet du ".$_SESSION['dateHeureDepart']."</td></tr>";
-        echo "<tr><td>départ</td><td>:</td><td>".$_SESSION['lieuDepart']."</td></tr>";
-        echo "<tr><td>arrivée</td><td>:</td><td>".$_SESSION['lieuArrivee']."</td></tr>";
+        echo "<tr><td colspan=3>Trajet du $dateHeureDepart</td></tr>";
+        echo "<tr><td>départ</td><td>:</td><td>$lieuDepart</td></tr>";
+        echo "<tr><td>arrivée</td><td>:</td><td>$lieuArrivee</td></tr>";
         echo "<tr><td>places (passagers)</td><td>:</td><td>$maxpassagers</td></tr>";
         echo "<tr><td>places (bagages)</td><td>:</td><td>$maxbagages</td></tr>";
         echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
@@ -42,6 +42,8 @@
         $_SESSION['lieuArrivee']=$lieuArrivee;
         $_SESSION['dateHeureDepart']=$dateHeureDepart;
 
+
+       
 
        ?>
 
