@@ -26,7 +26,15 @@ if(isset($_POST['button']))
             'conducteur' => $_SESSION['identifiant']
         )
     );
-    echo "votre covoiturage a bien été enregistré!";
+    if($isAuthTest)
+    {
+        echo "votre covoiturage a bien été enregistré!";
+    }
+    else
+    {
+        echo "oops, il y a eu un problème!";
+    }
+
 }
 
 
