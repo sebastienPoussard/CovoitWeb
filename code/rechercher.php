@@ -32,7 +32,7 @@ if (!$resultat) {
 <?php
 // sinon les afficher tous
 foreach ($resultat as $trajet):
-  $photo = glob("../user/".$trajet['conducteur'].".*")[0];
+  $photo = glob("/user/".$trajet['conducteur'].".*")[0];
 ?>
   <div class="col-md-3 ficheTrajet" id="border" >
     <img src="../user/<?php echo $photo; ?>" class="img-circle" alt="profilpicture" id="avatar">
@@ -43,13 +43,19 @@ foreach ($resultat as $trajet):
   <!-- Partie droite avec infos du trajet  -->
   <div class="col-sm-9">
     <h3>
-      Le <?php echo $trajet['dateheuredepart'] ?>
+      Le <?php echo $trajet['dateheuredepart']; ?>
     </h3>
     <h4>
-      De : <?php echo $trajet['pointdepart'] ?>
+      De : <?php echo $trajet['pointdepart']; ?>
     </h4>
     <h4>
-      A <?php echo $trajet['pointarrivee'] ?>
+      A <?php echo $trajet['pointarrivee']; ?>
+    </h4>
+    <h4>
+      <form action="inscription_a_un_covoit.php" method="post">
+        <input type="text" name="idcovoit" value="<?php echo $trajet['idtrajet']; ?>" hidden>
+        <input type="submit" name="" value="Reserver">
+      </form>
     </h4>
   </div>
 <?php

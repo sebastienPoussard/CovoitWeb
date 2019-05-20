@@ -24,23 +24,38 @@ $nomUtilisateur = $res[0]['prenomuser'];
     </form>
     <!-- partie droite de la barre de navigation -->
     <ul class="nav navbar-nav navbar-right">
-      <!-- photo de l'utilisateur -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <img class="rounded" src="/user/avatar.jpg" width="50" height="50">
-        </a>
-      </li>
+      <!-- photo de l'utilisateur s'il est identifié -->
+      <?php
+      if (isset($_SESSION['identifiant'])) {
+        echo '<li class="nav-item">';
+        echo '  <a class="nav-link" href="#">';
+        echo '<img class="rounded" src="';
+        echo '/user/'.$_SESSION['identifiant'].".jpg";
+        echo '" width="50" height="50">';
+        echo '  </a>';
+        echo '</li>';
+      }
+       ?>
+
       <!-- accès au profil de l'utilisateur -->
-      <li class="nav-item">
         <?php
         // afficher le prénom de l'utilisateur seulement s'il est connecté
         if(isset($_SESSION['identifiant'])) {
-          echo '<a class="nav-link oi oi-person text-primary pt-3" href="#"> ';
-          echo $nomUtilisateur;
-          echo "<a>";
+          echo '<li class="nav-item dropdown">';
+          echo '  <a class="nav-link dropdown-toggle oi oi-person text-primary pt-3" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+          echo ' '.$nomUtilisateur;
+          echo ' </a>';
+          echo '  <div class="dropdown-menu" aria-labelledby="navbarDropdown">';
+          echo '    <a class="dropdown-item text-primary" href="/mes_reservations.php">Mes reservations</a>';
+          echo '    <a class="dropdown-item text-primary" href="/mes_trajets_proposes.php">Mes trajets proposés</a>';
+          echo '  <div class="dropdown-divider"></div>';
+          echo '    <a class="dropdown-item text-primary" href="mon_profil.php">Mon profil</a>';
+          echo '  </div>';
+          echo '</li>';
         }
-         ?>
-      </li>
+      ?>
+
       <!-- déconnexion de l'utilisateur -->
       <li class="nav-item">
         <?php

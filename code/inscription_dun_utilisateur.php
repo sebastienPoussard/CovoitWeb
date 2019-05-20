@@ -49,6 +49,8 @@ if ($ok) {
         'prenomuser'=>$prenomUser,
         'estban'=>"FALSE",
         'description'=>$descriptionUser));
+
+  require $_SERVER["DOCUMENT_ROOT"].'/avatar.php';
   // afficher un message de réussite
   echo '<p class="text-center">Votre inscription est terminée vous pouvez m\'intenant vous identifier</p>';
 }
