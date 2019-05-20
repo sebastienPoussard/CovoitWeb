@@ -12,8 +12,7 @@
 
 if(isset($_POST['button']))
 {
-    $reqTest= 'INSERT INTO Trajet(idTrajet , pointdepart , pointarrivee , dateheuredepart, conducteur) 
-              VALUES(:idtrajet , :pointdepart , :pointarrivee , :dateheuredepart, :conducteur)';
+    $reqTest= 'INSERT INTO Trajet(idtrajet , pointdepart , pointarrivee , dateheuredepart, conducteur) VALUES(:idtrajet , :pointdepart , :pointarrivee , :dateheuredepart, :conducteur)';
     //'.$_SESSION['$idtrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuArrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')');
 
     // Prepare and execute the query
@@ -27,8 +26,6 @@ if(isset($_POST['button']))
             'conducteur' => $_SESSION['identifiant']
         )
     );
-
-    $reqInsert->execute();
     header("Location: https://covoit.pouseb.fr/index.php");
 }
 
