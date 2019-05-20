@@ -10,14 +10,14 @@
  */
 var_dump($_SESSION);
 
-/*
+
 if(isset($_POST['button']))
 {
     $reqInsert= 'INSERT INTO Trajet(idTrajet , pointdepart , pointarrivee , dateheuredepart, conducteur) VALUES('.$_SESSION['$idTrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuarrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')';
     $conn->execute($reqInsert);
     header("Location: https://covoit.pouseb.fr/index.php");
 }
-*/
+
 
 ?>
 

@@ -22,6 +22,10 @@
             $estAnnule=false;
             $voiture=$_POST['modele'];
 
+            $_SESSION['idtrajet']=$idTrajet;
+            $_SESSION['lieuDepart']=$lieuDepart;
+            $_SESSION['lieuArrivee']=$lieuArrivee;
+            $_SESSION['dateHeureDepart']=$dateHeureDepart;
 
         echo "<table>";
         echo "<tr><td colspan=3>Trajet du $dateHeureDepart</td></tr>";
@@ -37,10 +41,7 @@
         echo "</table>";
         echo "</form>";
 
-        $_SESSION['idtrajet']=$idTrajet;
-        $_SESSION['lieuDepart']=$lieuDepart;
-        $_SESSION['lieuArrivee']=$lieuArrivee;
-        $_SESSION['dateHeureDepart']=$dateHeureDepart;
+
 
 
 
