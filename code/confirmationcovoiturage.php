@@ -2,11 +2,11 @@
 <!-- insérer la balise pour utiliser le CSS ici -->
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 <?php
-        //ATTENTION CETTE VARIABLE EST LA PUREMENT POUR UN TEST
-        $mail = $_SESSION['identifiant'];
-        //FIN ATTENTION
+            $mail = $_SESSION['identifiant'];
+
             // Query
             $req=$bdd->prepare('SELECT maxPassagers,maxbagages FROM Voiture WHERE proprietaire = :mail AND modele = :modele');
+
             // Prepare and execute the query
             $res = $req->execute(array('mail' => $mail, 'modele' => $_POST['modele']));
             $data = $req->fetch();
@@ -30,12 +30,20 @@
         echo "<tr><td>places (passagers)</td><td>:</td><td>$maxpassagers</td></tr>";
         echo "<tr><td>places (bagages)</td><td>:</td><td>$maxbagages</td></tr>";
         echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
-        echo "<tr><td><a href=\"../Profil/profil.php\" target=\"_blank\"> <input type=\"button\" value=\"oui\">  </a></td>
+        echo "<tr><td><input type=\"button\" value=\"oui\"></td>
              <td></td><td><a href=\"../modules/proposer.php\" target=\"_blank\"> <input type=\"button\" value=\"non\"> </a></td></tr>";
         echo "</table>";
 
-            //$bdd->exec("INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('$idTrajet','$lieuDepart','$lieuarrivee','$dateHeureDepart','$estAnnule')");
-                       // }
+        if(isset($_POST['oui']))
+        {
+            header('Location=/index.php');
+        }
+        function insérerCovoitBDD($idTrajet,$lieuDepart,$lieuarrivee,$dateHeureDepart,$estAnnule)
+        {
+            $bdd->exec("INSERT INTO Trajet(idTrajet , depart , arrivee , dateheuredepart) VALUES('.$idTrajet.','.$lieuDepart.','.$lieuarrivee.','.$dateHeureDepart.','.$estAnnule.')");
+        }
+
+
        ?>
 
 
