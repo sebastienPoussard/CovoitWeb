@@ -36,19 +36,6 @@ if ($_SESSION['identifiant']) {
   // parcourir l'ensemble des trajets.
   foreach ($res as $trajet) {
 
-    // recuperer le nombre de places max sur le trajet
-    $reqPlaceMax = $bdd->prepare('SELECT maxpassagers FROM voiture
-                          WHERE matricule = :matricule;');
-    $reqPlaceMax->execute(array('matricule'=> $trajet['idvoiture']));
-    $resPlaceMax = $reqPlaceMax->fetchAll(PDO::FETCH_ASSOC);
-    $nbPassagersMax = $resPlaceMax[0]['maxpassagers'];
-    // recuperer le nombre de places déja occupés
-    $reqPassagers = $bdd->prepare('SELECT COUNT(*) FROM reservation WHERE idtrajet = :idTrajet
-        AND estaccepte = true AND estvalide = true;');
-    $reqPassagers->execute(array('idTrajet'=> $trajet['idtrajet']));
-    $resPassagers = $reqPassagers->fetchAll(PDO::FETCH_ASSOC);
-    $nbReservation= $resPassagers[0]['count'];
-
     // convertir la date en format fr
     $datefr = strftime("%d/%m/%Y à %H:%M",strtotime($trajet['dateheuredepart']));
 
@@ -61,12 +48,7 @@ if ($_SESSION['identifiant']) {
       <ul class="list-group list-group-flush">
         <li class="list-group-item list-group-item-info">
           <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
-          <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>';
-    echo '<p class="card-text">Reservations : '.$nbReservation.'/'.$nbPassagersMax.'</p>';
-    if ($nbReservation == $nbPassagersMax) {
-      echo '<p class="card-text text-success">Trajet complet !</p>';
-    }
-    echo '
+          <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>
         </li>
       ';
 
@@ -76,7 +58,7 @@ if ($_SESSION['identifiant']) {
                   WHERE reservation.idtrajet = :idtrajet
                   AND estaccepte = TRUE
                   AND estvalide = TRUE;');
-    $req2->execute(array('idtrajet'=> $trajet['idtrajet']));
+    $req2->execute(array('idtrajet'=> $res[0]['idtrajet']));
     $res2 = $req2->fetchAll(PDO::FETCH_ASSOC);
     if ($res2) {
       echo '
@@ -94,7 +76,7 @@ if ($_SESSION['identifiant']) {
                   WHERE reservation.idtrajet = :idtrajet
                   AND estaccepte = FALSE
                   AND estvalide = TRUE;');
-    $toto = $req3->execute(array('idtrajet'=> $trajet['idtrajet']));
+    $req3->execute(array('idtrajet'=> $res[0]['idtrajet']));
     $res3 = $req3->fetchAll(PDO::FETCH_ASSOC);
     // afficher les utilisateurs souhaitant participer au covoiturage.
     if ($res3) {
