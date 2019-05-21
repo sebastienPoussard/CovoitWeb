@@ -10,11 +10,15 @@ $dateDepart = $_POST['dateDepart'];
 $heureDepart = $_POST['heureDepart'];
 $nombreBagage = $_POST['bagages'];
 // requete dans la BDD pour récuperer les trajets demandés
-$reqRechercher = $bdd->prepare('SELECT * FROM trajet WHERE pointdepart=:lieuDepart AND pointarrivee=:lieuArrivee');
+$reqRechercher = $bdd->prepare('SELECT * FROM trajet
+                                WHERE pointdepart=:lieuDepart
+                                AND pointarrivee=:lieuArrivee
+                                AND conducteur != :idconducteur');
 $reqRechercher->execute(
     array(
         "lieuDepart" => $lieuDepart,
         "lieuArrivee" => $lieuArrivee,
+        "idconducteur" => $_SESSION['identifiant']
     )
 ) or die(print_r($bdd->errorInfo()));
 
@@ -33,32 +37,28 @@ if (!$resultat) {
 // sinon les afficher tous
 foreach ($resultat as $trajet):
   $photo = glob("/user/".$trajet['conducteur'].".*")[0];
-?>
-  <div class="col-md-3 ficheTrajet" id="border" >
-    <img src="../user/<?php echo $photo; ?>" class="img-circle" alt="profilpicture" id="avatar">
-    <h4>
-      Conducteur :<?php echo $trajet['conducteur']; ?>
-    </h4>
+  $datefr = strftime("%d/%m/%Y à %H:%M",strtotime($trajet['dateheuredepart']));
+
+  echo '
+   <div class="card text-center">
+   <img class="card-img-top" src="/user/'.$photo.'" alt="Card image cap">
+    <div class="card-header oi oi-flag">
+      Trajet de '.$trajet['pointdepart'].' à '.$trajet['pointarrivee'].'
+    </div>
+    <div class="card-body">
+      <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
+      <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>
+      <p class="card-text oi oi-envelope-closed"> Conducteur : '.$trajet['conducteur'].'</p>
+    </div>
+    <div class="card-footer text-muted">
+    <form class="" action="inscription_a_un_covoit.php" method="post">
+       <input type="text" name="idcovoit" value="'.$trajet['idtrajet'].'" hidden>
+       <input class="btn btn-outline-danger" type="submit" name="" value="Reserver ce covoiturage">
+    </form>
+    </div>
   </div>
-  <!-- Partie droite avec infos du trajet  -->
-  <div class="col-sm-9">
-    <h3>
-      Le <?php echo $trajet['dateheuredepart']; ?>
-    </h3>
-    <h4>
-      De : <?php echo $trajet['pointdepart']; ?>
-    </h4>
-    <h4>
-      A <?php echo $trajet['pointarrivee']; ?>
-    </h4>
-    <h4>
-      <form action="inscription_a_un_covoit.php" method="post">
-        <input type="text" name="idcovoit" value="<?php echo $trajet['idtrajet']; ?>" hidden>
-        <input type="submit" name="" value="Reserver">
-      </form>
-    </h4>
-  </div>
-<?php
+  <br>';
+
 endforeach;
 }
 
