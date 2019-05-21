@@ -42,26 +42,56 @@ if (!$resultat) {
   </div>
 
 <?php
-// sinon les afficher tous
+// sinon les afficher tous les trajets
 foreach ($resultat as $trajet):
+  // recuperer le nombre de places max sur le trajet
+  $req = $bdd->prepare('SELECT maxpassagers FROM voiture
+                        WHERE matricule = :matricule;');
+  $req->execute(array('matricule'=> $trajet['idvoiture']));
+  $res = $req->fetchAll(PDO::FETCH_ASSOC);
+  $nbPassagersMax = $res[0]['maxpassagers'];
+  // recuperer le nombre de places déja occupés
+  $req = $bdd->prepare('SELECT COUNT(*) FROM reservation WHERE idtrajet = :idTrajet
+      AND estaccepte = true AND estvalide = true;');
+  $req->execute(array('idTrajet'=> $trajet['idtrajet']));
+  $res = $req->fetchAll(PDO::FETCH_ASSOC);
+  $nbReservation= $res[0]['count'];
+
+  // convertire la date / heure
   $photo = glob("/user/".$trajet['conducteur'].".*")[0];
   $datefr = strftime("%d/%m/%Y à %H:%M",strtotime($trajet['dateheuredepart']));
-
   echo '
    <div class="card text-center">
-   <img class="card-img-top" src="/user/'.$photo.'" alt="Card image cap">
     <div class="card-header oi oi-flag">
       Trajet de '.$trajet['pointdepart'].' à '.$trajet['pointarrivee'].'
     </div>
     <div class="card-body">
+    <div class="row">
+    <div class="col-lg-3">
+    <img class="" src="/user/'.$trajet['conducteur'].'.jpg" width="100" height="100" alt="Card image cap">
+    </div>
+    <div class="col-lg-9">
       <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
       <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>
+      <p class="card-text">Places : ';
+  if ($nbReservation == $nbPassagersMax) {
+    echo '<span class="text-danger">'.$nbReservation.'/'.$nbPassagersMax.'</span>';
+  } else {
+    echo '<span class="text-success">'.$nbReservation.'/'.$nbPassagersMax.'</span>';
+  }
+  echo '</p>
       <p class="card-text oi oi-envelope-closed"> Conducteur : '.$trajet['conducteur'].'</p>
+    </div>
+    </div>
     </div>
     <div class="card-footer text-muted">
     <form class="" action="inscription_a_un_covoit.php" method="post">
        <input type="text" name="idcovoit" value="'.$trajet['idtrajet'].'" hidden>
-       <input class="btn btn-outline-danger" type="submit" name="" value="Reserver ce covoiturage">
+       <input class="btn btn-outline-danger" type="submit" name="" value="Reserver ce covoiturage" ';
+       if ($nbReservation == $nbPassagersMax) {
+         echo 'hidden';
+       }
+    echo '>
     </form>
     </div>
   </div>
