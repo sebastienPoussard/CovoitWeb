@@ -10,15 +10,23 @@ $dateDepart = $_POST['dateDepart'];
 $heureDepart = $_POST['heureDepart'];
 $nombreBagage = $_POST['bagages'];
 // requete dans la BDD pour récuperer les trajets demandés
+// qui ne sont pas déjà reservés et dont l'utilisateur n'est pas conducteur
+// et dont le conducteur n'a pas annulé le trajet
 $reqRechercher = $bdd->prepare('SELECT * FROM trajet
                                 WHERE pointdepart=:lieuDepart
                                 AND pointarrivee=:lieuArrivee
-                                AND conducteur != :idconducteur');
+                                AND conducteur != :idconducteur
+                                AND estannule = false
+                                AND idtrajet NOT IN (
+                                  SELECT idtrajet FROM reservation
+                                  WHERE mail = :mail
+                                )');
 $reqRechercher->execute(
     array(
         "lieuDepart" => $lieuDepart,
         "lieuArrivee" => $lieuArrivee,
-        "idconducteur" => $_SESSION['identifiant']
+        "idconducteur" => $_SESSION['identifiant'],
+        "mail" => $_SESSION['identifiant']
     )
 ) or die(print_r($bdd->errorInfo()));
 
