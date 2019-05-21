@@ -9,7 +9,7 @@
  * Time: 23:04
  */
 
-
+var_dump($_POST);
 if(isset($_POST['valider']))
 {
 
