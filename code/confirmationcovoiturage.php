@@ -15,14 +15,14 @@
 
 
 
-            $idTrajet = hexdec(uniqid());
+
             $lieuDepart =$_POST['depart'];
             $lieuArrivee =$_POST['arrivee'];
             $dateHeureDepart =$_POST['dateHeureDepart'];
             $estAnnule=false;
             $voiture=$_POST['modele'];
 
-            $_SESSION['idtrajet']=$idTrajet;
+
             $_SESSION['lieuDepart']=$lieuDepart;
             $_SESSION['lieuArrivee']=$lieuArrivee;
             $_SESSION['dateHeureDepart']=$dateHeureDepart;
