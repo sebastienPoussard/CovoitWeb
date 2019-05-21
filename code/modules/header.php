@@ -50,7 +50,7 @@ $nomUtilisateur = $res[0]['prenomuser'];
           echo '    <a class="dropdown-item text-primary" href="/mes_reservations.php">Mes reservations</a>';
           echo '    <a class="dropdown-item text-primary" href="/mes_trajets_proposes.php">Mes trajets proposés</a>';
           echo '  <div class="dropdown-divider"></div>';
-          echo '    <a class="dropdown-item text-primary" href="mon_profil.php">Mon profil</a>';
+          echo '    <a class="dropdown-item text-primary" href="profil.php">Mon profil</a>';
           echo '  </div>';
           echo '</li>';
         }

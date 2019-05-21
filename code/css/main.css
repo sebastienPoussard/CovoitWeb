@@ -2,7 +2,7 @@
   background-image: url("../img/img_fond_90.jpg");
   background-repeat: no-repeat;
   background-size: cover; /* Resize the background image to cover the entire container */
-  height: 100vh; /* 100% de la taille de l'écran de l'utilisateur */
+  min-height: 100vh; /* 100% de la taille de l'écran de l'utilisateur */
 }
 
 #rechercher {

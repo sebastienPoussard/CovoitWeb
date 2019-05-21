@@ -35,19 +35,23 @@ if ($_SESSION['identifiant']) {
   $res = $req->fetchAll(PDO::FETCH_ASSOC);
   // parcourir l'ensemble des trajets.
   foreach ($res as $trajet) {
-    echo 'Depart : '.$trajet['pointdepart'];
-    echo '<br>';
-    echo 'Arrivee : '.$trajet['pointarrivee'];
-    echo '<br>';
-    echo 'Heure de départ : '.$trajet['dateheuredepart'];
-    echo '<br>';
-    echo 'Immatriculation du véhicule : '.$trajet['idvoiture'];
-    // annulation du covoiturage
-    echo '<br>';
-    echo '<form class="" action="mes_trajets_proposes.php" method="post">';
-    echo '    <input type="text" name="idtrajetcancel" value="'.$trajet['idtrajet'].'" hidden>';
-    echo '    <input type="submit" name="" value="Annuler ce covoiturage">';
-    echo '</form>';
+
+    // convertir la date en format fr
+    $datefr = strftime("%d/%m/%Y à %H:%M",strtotime($trajet['dateheuredepart']));
+
+    echo '
+     <div class="card text-center">
+      <div class="card-header oi oi-flag">
+        Trajet de '.$trajet['pointdepart'].' à '.$trajet['pointarrivee'].'
+      </div>
+      <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item list-group-item-info">
+          <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
+          <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>
+        </li>
+      ';
+
     // recuperer la liste des utilisateurs confirmés participant au covoiturages.
     $req2 = $bdd->prepare('SELECT * FROM utilisateur
                   LEFT JOIN reservation ON reservation.mail = utilisateur.mail
@@ -57,14 +61,14 @@ if ($_SESSION['identifiant']) {
     $req2->execute(array('idtrajet'=> $res[0]['idtrajet']));
     $res2 = $req2->fetchAll(PDO::FETCH_ASSOC);
     if ($res2) {
-      echo '<br><br>liste des utilisateur confirmé participant au covoiturage :';
+      echo '
+        <li class="list-group-item list-group-item-success">
+          <H4 class="text-center">Utilisateurs confirmés participant au covoiturage </H4>';
       // afficher tous les utilisateurs participants au covoiturage.
       foreach ($res2 as $utilisateur) {
-        echo '<br>';
-        echo 'nom :'.$utilisateur['nomuser'];
-        echo '<br>';
-        echo 'prenom :'.$utilisateur['prenomuser'];
+        echo '<p class="oi oi-check d-block"> '.$utilisateur['prenomuser']." ".$utilisateur['nomuser']." (".$utilisateur['mail'].")</p> ";
       }
+      echo '</li>';
     }
     // recuperer la liste des utilisateur souhaitant participer au covoiturage.
     $req3 = $bdd->prepare('SELECT * FROM utilisateur
@@ -76,20 +80,33 @@ if ($_SESSION['identifiant']) {
     $res3 = $req3->fetchAll(PDO::FETCH_ASSOC);
     // afficher les utilisateurs souhaitant participer au covoiturage.
     if ($res3) {
-      echo '<br><br>les utilisateurs suivant souhaitent participer au covoiturage : <br>';
+      echo '
+        <li class="list-group-item list-group-item-warning">
+          <H4 class="text-center">les utilisateurs suivant souhaitent rejoindre ce covoiturage
+          et attendent votre acceptation</H4>';
     }
     foreach ($res3 as $utilisateur) {
-      echo '<br>';
-      echo 'nom :'.$utilisateur['nomuser'];
-      echo '<br>';
-      echo 'prenom :'.$utilisateur['prenomuser'];
-      echo '<form class="" action="mes_trajets_proposes.php" method="post">';
+      echo '<p class="oi oi-question-mark d-inline"> '.$utilisateur['prenomuser']." ".$utilisateur['nomuser']." (".$utilisateur['mail'].")</p> ";
+      echo '<form class="d-inline" action="mes_trajets_proposes.php" method="post">';
       echo '    <input type="text" name="iduser" value="'.$utilisateur['mail'].'" hidden>';
       echo '    <input type="text" name="idtrajet" value="'.$trajet['idtrajet'].'" hidden>';
-      echo '    <input type="submit" name="" value="Accepter la participation">';
+      echo '    <input class="btn btn-success btn-sm" type="submit" name="" value="Accepter la participation">';
       echo '</form>';
+      echo "</p>";
     }
-
+    echo '</li>';
+    // annulation du covoiturage
+    echo '
+        </ul>
+      </div>
+      <div class="card-footer text-muted">
+        <form class="" action="mes_trajets_proposes.php" method="post">
+        <input type="text" name="idtrajetcancel" value="'.$trajet['idtrajet'].'" hidden>
+        <input class="btn btn-outline-danger" type="submit" name="" value="Annuler ce covoiturage">
+        </form>
+      </div>
+    </div>
+    <br>';
   }
 } else {
   // si l'utilisateur n'est pas authentifié, afficher un message d'erreur.
