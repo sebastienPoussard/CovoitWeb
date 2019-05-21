@@ -80,11 +80,13 @@ echo "<tr><td>voiture(s) : ";
 while($resultTest=$isAuthTest->fetch())
 {echo $resultTest['marque'].", ";}
 echo "</td></tr>";
+
 echo "</table>";
 echo "</div>";
 
 echo "</div>";
 echo "</div>";
+echo "<tr><td>ajouter une voiture ?</td><td> ICI </td> </tr>";
 
 echo "<div class=\"container\">";
 echo "<div class=\"row\">";
