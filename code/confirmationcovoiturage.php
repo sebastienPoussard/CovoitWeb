@@ -38,7 +38,7 @@
 
         echo "<form method='POST' action='insertioncovoitBDD.php'>";
         echo "<tr><td><input type='submit' name='button' value='oui'></td>
-             <td></td><td><a href='../modules/proposer.php' target='_blank'> <input type='button' value='non'> </a></td></tr>";
+             <td></td><td><a href='/index.php' target='_blank'> <input type='button' value='non'> </a></td></tr>";
         echo "</table>";
         echo "</form>";
 
