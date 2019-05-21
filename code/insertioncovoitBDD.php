@@ -12,9 +12,11 @@
 
 if(isset($_POST['button']))
 {
-    $reqTest= 'INSERT INTO Trajet(idtrajet , pointdepart , pointarrivee , dateheuredepart, estannule, conducteur) VALUES(:idtrajet , :pointdepart , :pointarrivee , :dateheuredepart, false, :conducteur)';
+    var_dump($_SESSION);
+    $reqTest= 'INSERT INTO Trajet(idtrajet , pointdepart , pointarrivee , dateheuredepart, estannule, conducteur) 
+                VALUES(:idtrajet , :pointdepart , :pointarrivee , :dateheuredepart, false, :conducteur)';
     //'.$_SESSION['$idtrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuArrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')');
-
+/*
     // Prepare and execute the query
     $isAuthTest = $bdd->prepare($reqTest);
     $isAuthTest->execute(
@@ -34,7 +36,7 @@ if(isset($_POST['button']))
     {
         echo "oops, il y a eu un problème!";
     }
-
+*/
 }
 
 
