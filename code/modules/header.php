@@ -13,13 +13,13 @@ $nomUtilisateur = $res[0]['prenomuser'];
   </button>
   <!-- la "marque" du site, correspond au logo -->
   <a class="navbar-brand" href="/index.php">
-    <img src="/img/logo.png" width="80" height="50" alt="logo QuietCar">
+    <img src="/img/logo.png" width="80" height="80" alt="logo QuietCar">
   </a>
   <!-- les éléments de la barre de navigation -->
   <div class="collapse navbar-collapse" id="navbarNav">
     <!-- formulaire de recherche -->
-    <form class="form-inline mx-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Utilisateur" aria-label="Search">
+    <form class="form-inline mx-auto" action="/modules/rechercher_utilisateur.php">
+      <input class="form-control mr-sm-2" type="search" placeholder="Utilisateur" aria-label="Search" name="prenomUser">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">recherche</button>
     </form>
     <!-- partie droite de la barre de navigation -->
