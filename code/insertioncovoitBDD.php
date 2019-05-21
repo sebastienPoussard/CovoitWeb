@@ -13,8 +13,8 @@
 if(isset($_POST['button']))
 {
 
-    $reqTest= 'INSERT INTO Trajet( pointdepart , pointarrivee , dateheuredepart, estannule, conducteur) 
-                VALUES( :pointdepart , :pointarrivee , :dateheuredepart, false, :conducteur)';
+    $reqTest= 'INSERT INTO Trajet( pointdepart , pointarrivee , dateheuredepart, estannule, conducteur, idvoiture) 
+                VALUES( :pointdepart , :pointarrivee , :dateheuredepart, false, :conducteur, :matricule)';
     //'.$_SESSION['$idtrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuArrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')');
 
     // Prepare and execute the query
@@ -24,7 +24,8 @@ if(isset($_POST['button']))
             'pointdepart' => $_SESSION['lieuDepart'],
             'pointarrivee' => $_SESSION['lieuArrivee'],
             'dateheuredepart' => $_SESSION['dateHeureDepart'],
-            'conducteur' => $_SESSION['identifiant']
+            'conducteur' => $_SESSION['identifiant'],
+            'matricule' => $_SESSION['matricule']
         )
     );
     if($isAuthTest)
