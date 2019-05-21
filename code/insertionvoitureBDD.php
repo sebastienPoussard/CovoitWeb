@@ -10,7 +10,7 @@
  */
 
 
-if(isset($_POST['button']))
+if(isset($_POST['valider']))
 {
 
     $reqTest= 'INSERT INTO voiture VALUES( :matricule , :marque , :modele, :maxbagages, :maxpassagers, :proprietaire)';
