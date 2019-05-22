@@ -4,6 +4,9 @@
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 <?php
 $mail = $_SESSION['identifiant'];
+/* on demande ici toutes les informations qui nous permetteront d'ajouter la voiture dans la base de données
+ * marque, modele, matricule ,maximum de bagages, maximum de passagers
+ */
 echo "<form method='post' action='insertionvoitureBDD.php' enctype='multipart/form-data'>";
     echo "<table>";
         echo "<tr> <td> Nouvelle voiture de : </td><td> $mail </td> </tr>";

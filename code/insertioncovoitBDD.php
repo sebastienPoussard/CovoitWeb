@@ -10,14 +10,14 @@
  */
 
 
-if(isset($_POST['button']))
+if(isset($_POST['button'])) //s'active a la validation
 {
+    //on insère dans la BDD les informations concernant le nouveau covoiturage
 
     $reqTest= 'INSERT INTO Trajet( pointdepart , pointarrivee , dateheuredepart, estannule, conducteur, idvoiture) 
                 VALUES( :pointdepart , :pointarrivee , :dateheuredepart, false, :conducteur, :matricule)';
-    //'.$_SESSION['$idtrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuArrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')');
 
-    // Prepare and execute the query
+
     $isAuthTest = $bdd->prepare($reqTest);
     $isAuthTest->execute(
         array(
@@ -28,6 +28,8 @@ if(isset($_POST['button']))
             'matricule' => $_SESSION['matricule']
         )
     );
+
+    //si la requete fonctionne on envoie un message indiquant que tout s'est bien passé
     if($isAuthTest)
     {
         echo "votre covoiturage a bien été enregistré!";
