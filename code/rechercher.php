@@ -76,7 +76,7 @@ foreach ($resultat as $trajet):
     <img class="" src="/user/'.$trajet['conducteur'].'.jpg" width="100" height="100" alt="Card image cap">
     </div>
     <div class="col-lg-9">
-      <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
+      <h5 class="card-title oi oi-clock"> Départ prévu : '.$datefr.'</h5>
       <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>
       <p class="card-text">Places : ';
   if ($nbReservation == $nbPassagersMax) {
