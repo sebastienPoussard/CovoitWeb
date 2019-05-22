@@ -25,7 +25,7 @@ if ($_SESSION['identifiant'] && isset($_POST['idtrajetcancel'])) {
 
 // verifier que l'utilisateur est identifié pour acceder à cette page.
 if ($_SESSION['identifiant']) {
-  echo '<H3 class="text-center">Mes trajets proposés</H3>';
+  echo '<br><H1 class="oi oi-book d-flex justify-content-center"></H1><H3 class="text-center">Mes trajets proposés</H3>';
   $ladate = date("Y-m-j").' '.date("H:i",time()+60*60*2);
   // récuperer les reservations de l'utilisateur.
   $req = $bdd->prepare('SELECT * FROM trajet

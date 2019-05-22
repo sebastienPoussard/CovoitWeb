@@ -42,18 +42,18 @@ $nomUtilisateur = $res[0]['prenomuser'];
         // afficher le prénom de l'utilisateur seulement s'il est connecté
         if(isset($_SESSION['identifiant'])) {
           echo '<li class="nav-item dropdown">';
-          echo '  <a class="nav-link dropdown-toggle oi oi-person text-primary pt-3" href="#" id="navbarDropdown" role="button"
+          echo '  <a class="nav-link dropdown-toggle oi text-primary pt-3" href="#" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
           echo ' '.$nomUtilisateur;
           echo ' </a>';
           echo '  <div class="dropdown-menu" aria-labelledby="navbarDropdown">';
-          echo '    <a class="dropdown-item text-primary" href="/mes_reservations.php">Mes reservations</a>';
-          echo '    <a class="dropdown-item text-primary" href="/mes_trajets_proposes.php">Mes trajets proposés</a>';
+          echo '    <a class="dropdown-item text-primary oi oi-cart" href="/mes_reservations.php"> Mes reservations</a>';
+          echo '    <a class="dropdown-item text-primary oi oi-book" href="/mes_trajets_proposes.php"> Mes trajets proposés</a>';
           echo '  <div class="dropdown-divider"></div>';
-          echo '    <a class="dropdown-item text-primary" href="/mes_trajets_termines.php">Trajets terminés</a>';
-          echo '    <a class="dropdown-item text-primary" href="/noter_mes_trajets.php">Noter un trajet participé</a>';
+          echo '    <a class="dropdown-item text-primary oi oi-eye" href="/mes_trajets_termines.php"> Trajets proposés terminés</a>';
+          echo '    <a class="dropdown-item text-primary oi oi-pencil" href="/noter_mes_trajets.php"> Noter un trajet participé</a>';
           echo '  <div class="dropdown-divider"></div>';
-          echo '    <a class="dropdown-item text-primary" href="profil.php">Mon profil</a>';
+          echo '    <a class="dropdown-item text-primary oi oi-person" href="profil.php"> Mon profil</a>';
           echo '  </div>';
           echo '</li>';
         }

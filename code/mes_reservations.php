@@ -5,7 +5,7 @@
 <?php
 // verifier que l'utilisateur est identifié pour acceder à cette page.
 if ($_SESSION['identifiant']) {
-  echo '<H3 class="text-center">Mes reservations</H3><br>';
+  echo '<H1 class="oi oi-cart d-flex justify-content-center"></H1><H3 class="text-center">Mes reservations</H3><br>';
 
   // récuperer les reservations de l'utilisateur.
   $req = $bdd->prepare('SELECT * FROM reservation
