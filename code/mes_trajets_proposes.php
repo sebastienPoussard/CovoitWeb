@@ -35,7 +35,6 @@ if ($_SESSION['identifiant']) {
   $toto = $req->execute(array('mail'=> $_SESSION['identifiant'],
                       'ladate' => $ladate));
   $res = $req->fetchAll(PDO::FETCH_ASSOC);
-  var_dump($_SESSION['identifiant']);
   // parcourir l'ensemble des trajets.
   foreach ($res as $trajet) {
 
