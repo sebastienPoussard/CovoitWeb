@@ -72,7 +72,7 @@ echo '<div class="card text-center">';
         echo '<div class="card-body">';
             echo '<div class="row">';
             echo '<div class="col-lg-3">';
-            echo '<img class="img-fluid" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
+            echo '<img class="img-fluid" src='.$photo_profil.' width="100%" height="100%" alt="Card image cap">';
             /*if(file_exists($photo_profil))
             {
                 echo '<img class="" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
