@@ -21,6 +21,10 @@ $maxbagages=$data['maxbagages'];
 
 $lieuDepart =$_POST['depart'];
 $lieuArrivee =$_POST['arrivee'];
+
+// merge objects to new object:
+$dateHeureDepart = new DateTime($_POST['dateDepart']->format('Y-m-d') .' '.$_POST['heureDepart']->format('H:i:s'));
+
 $dateHeureDepart =$_POST['dateHeureDepart'];
 $estAnnule=false;
 $voiture=$_POST['modele'];

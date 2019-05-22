@@ -5,7 +5,8 @@
   <form method="post" action="/confirmationcovoiturage.php" enctype="multipart/form-data">
     <p><input type="text" name="depart" placeholder="De:" required class="form-control"></p>
     <p><input type="text" name="arrivee" placeholder="à" required class="form-control"></p>
-    <p><input type="datetime-local" name="dateHeureDepart" placeholder="Jour" required class="form-control"></p>
+    <p><input type="date" name="dateDepart" placeholder="Jour" required class="form-control"></p>
+    <p><input type="time" name="heureDepart" placeholder="Heure" required class="form-control"> </p>
     <label for="choixvoiture" >vous conduirez votre : </label>
     <select type="select" name="modele">
 
