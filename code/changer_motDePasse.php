@@ -1,7 +1,11 @@
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/modules/gabaritDebut.php'; ?>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/modules/gabaritMillieu.php'; ?>
 <?php require 'modules/cobdd.php' ?>
-	<head>
-		<title>Changez votre mot de passe</title>
-		<link rel="stylesheet"type="text/css"href="main.css">
+    <head>
+        <title>Changez votre mot de passe</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
         <form method="post" action="changer_motDePasse.php" class="col-sm-5 p-3">
             <div class="row">
                 <div class="col-sm-12">
@@ -9,9 +13,12 @@
                         <div class="col-sm-12 m-auto">
                             <p><input type="email" name="identifiant" placeholder="identifiant@mail.fr"
                                       class="form-control" required></p>
-                            <p><input type="password" name="ancienMdp" placeholder="mot de passe" class="form-control" required></p>
-                            <p><input type="password" name="nouveauMDP" placeholder="mot de passe" class="form-control" required></p>
-                            <p><input type="password" name="nouveauMDP2" placeholder="mot de passe" class="form-control" required></p>
+                            <p><input type="password" name="ancienMDP" placeholder="mot de passe" class="form-control"
+                                      required></p>
+                            <p><input type="password" name="nouveauMDP" placeholder="mot de passe" class="form-control"
+                                      required></p>
+                            <p><input type="password" name="nouveauMDP2" placeholder="mot de passe" class="form-control"
+                                      required></p>
                         </div>
                     </div>
                 </div>
@@ -22,36 +29,35 @@
                 </div>
             </div>
         </form>
-	</head>
-	<body>
-<?php
-$ancienMDP = $_POST["ancienMDP"];
-$nouveauMDP = $_POST["nouveauMDP"];
-$nouveauMDP2 = $_POST["nouveauMDP2"];
-$identifiant = $_POST["identifiant"];
+    </head>
+    <body>
+    <?php
+    $ancienMDP = $_POST["ancienMDP"];
+    $nouveauMDP = $_POST["nouveauMDP"];
+    $nouveauMDP2 = $_POST["nouveauMDP2"];
+    $identifiant = $_POST["identifiant"];
 
+    $reqInfos = $bdd->prepare('SELECT mdp FROM utilisateur WHERE mail=:identifiant');
+    $reqInfos->bindValue(':identifiant', $_POST['identifiant'], PDO::PARAM_STR);
+    $reqInfos->execute();
+    $mdp = $reqInfos->fetchColumn();
 
-//si oldpass est bon et newpass1 = newpass2
-if( $ancienMDP == $oldpass and $nouveauMDP == $nouveauMDP2) {
-    ;
-    $req = $bdd->prepare('UPDATE utilisateur SET mdp= :mdp AND identifiant = :mail');
-    $test = $req->execute(array("mail" => $identifiant,
-                                "mdp"=> $nouveauMDP));
-    $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
-}
+    // sinon verifier que le mdp crypté correspond
+    $verificationMdp = password_verify($_POST["ancienMDP"], $mdp);
+    if ($verificationMdp) {
+        if ($nouveauMDP == $nouveauMDP2) {
 
-//si ancien mot de pass incorrect
-if  ($resultat != $ancienMDP){;
-	echo 'votre mot de passe est erroné';
-	}
-	//si  les 2 mdp sont differents
-if ($nouveauMDP != $nouveauMDP2){;
-	echo 'Vos mots de passes sont différents';
-	}
+            $req = $bdd->prepare('UPDATE utilisateur SET mdp= :mdp WHERE mail = :mail');
+            $cryptageMotDePasse = password_hash($_POST['nouveauMDP'], PASSWORD_DEFAULT);
+            $test = $req->execute(array("mail" => $identifiant, "mdp" => $cryptageMotDePasse));
+            echo "Votre mot de passe est modifié";
+        } else {
 
-
-
-
-?>
-	</body>
-	</html>
+            echo 'Vos mots de passes sont différents';
+        }
+    } else
+        echo "Mauvais mot de passe";
+    ?>
+    </body>
+    </html>
+<?php require $_SERVER["DOCUMENT_ROOT"] . '/modules/gabaritFin.php'; ?>
