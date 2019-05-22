@@ -56,7 +56,7 @@ if ($_SESSION['identifiant']) {
       Trajet de '.$res2[0]['pointdepart'].' à '.$res2[0]['pointarrivee'].'
       </div>
       <div class="card-body">
-      <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
+      <h5 class="card-title oi oi-clock"> Départ prévu : '.$datefr.'</h5>
       <p class="card-text">Immatriculation du véhicule : '.$res2[0]['idvoiture'].'</p>
       <p class="card-text oi oi-envelope-closed"> Contacter le conducteur : '.$res2[0]['conducteur'].'</p>';
       if (!$reqConf[0]['estaccepte']) {

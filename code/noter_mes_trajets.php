@@ -78,7 +78,7 @@ if ($_SESSION['identifiant']) {
       <div class="card-body">
       <ul class="list-group list-group-flush">
         <li class="list-group-item list-group-item-info">
-          <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
+          <h5 class="card-title oi oi-clock"> Départ prévu : '.$datefr.'</h5>
           <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>';
     echo '<p class="card-text">Reservations : '.$nbReservation.'/'.$nbPassagersMax.'</p>';
     if ($nbReservation == $nbPassagersMax) {
