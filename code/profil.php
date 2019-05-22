@@ -4,7 +4,7 @@
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 <?php
 $mail = $_SESSION['identifiant'];
-$photo_profil='/user/'.$mail.'.jpg';
+$photo_profil='/user/'.$_SESSION['identifiant'].'.jpg';
 
 /* Différentes requetes:
  * informations d'utilisateur
@@ -65,18 +65,19 @@ foreach ($tabreq as $req) {
 
 echo "<div class=\"container centered\">";
     echo "<div class=\"row\">";
-        echo "<div class=\"col\">";
-        echo $photo_profil ;
 
+        echo $photo_profil ;
+        if(file_exists($photo_profil))
+        {
+            echo "<div class='col'> <img class='rounded img-fluid' src=".$photo_profil."> </div>";
+        }
+        else
+        {
+            echo "<div class='col'> <img src='/img/logoPhotodeProfil.png'> </div>";
+        }
+        echo "<div class=\"col\">";
             echo "<table class='table table-hover'>";
-                if(file_exists($photo_profil))
-                {
-                    echo "<tr><td rowspan=8> <img class='rounded img-fluid' src=".$photo_profil."> </td></tr>";
-                }
-                else
-                {
-                    echo "<tr><td rowspan=8> <img src='/img/logoPhotodeProfil.png'> </td></tr>";
-                }
+
                 echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
                 echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
                 echo "<tr><td>nombre de trajets demandés: ".$tabResult[2][0]['nbdemandes']."</td></tr>";
