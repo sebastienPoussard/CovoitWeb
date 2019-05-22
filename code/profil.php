@@ -95,7 +95,7 @@ echo '<div class="card text-center">';
                         echo $resultTest['marque'].", ";
                     }
                 echo '</p>';
-                echo '<p class="card-text">Ajouter une voiture? <a href=\'ajoutVoiture.php\'>ICI</a></p>';
+                echo '<p class="card-text"><a href=\'ajoutVoiture.php\'><button id="button" class="btn btn-info" Ajouter une voiture</button></a></p>';
                 echo '<p class="card-text">'.$tabResult[0][0]['description'].'</p>';
             echo '</div>';
         echo '</div>';
