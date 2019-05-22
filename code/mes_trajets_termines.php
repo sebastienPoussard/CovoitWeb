@@ -5,7 +5,7 @@
 <?php
 // verifier que l'utilisateur est identifié pour acceder à cette page.
 if ($_SESSION['identifiant']) {
-  echo '<H3 class="text-center">Mon historique de trajets réalisés en tant que conducteur</H3>';
+  echo '<H1 class="oi oi-eye d-flex justify-content-center"></H1><H3 class="text-center">Trajets réalisés en tant que conducteur</H3>';
   $ladate = date("Y-m-j").' '.date("H:i",time()+60*60*2);
   // récuperer les trajets passés de l'utilisateur
   $req = $bdd->prepare('SELECT * FROM trajet

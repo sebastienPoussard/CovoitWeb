@@ -34,7 +34,7 @@ if ($_SESSION['identifiant'] && isset($_POST['commentaire'])) {
 
 // verifier que l'utilisateur est identifié pour acceder à cette page.
 if ($_SESSION['identifiant']) {
-  echo '<H3 class="text-center">Mes trajets participés en tant que passager</H3>';
+  echo '<H1 class="oi oi-pencil d-flex justify-content-center"></H1><H3 class="text-center">Mes trajets participés en tant que passager</H3>';
   $ladate = date("Y-m-j").' '.date("H:i",time()+60*60*2);
   // récuperer les trajets auquel l'utilisateur à participé
   $req = $bdd->prepare('SELECT * FROM trajet
