@@ -24,7 +24,6 @@ $lieuArrivee =$_POST['arrivee'];
 
 // merge objects to new object:
 $dateHeureDepart = $_POST['dateDepart'].' '.$_POST['heureDepart'];
-echo "date=".$_POST['dateDepart']." / heure=".$_POST['heureDepart'];
 $estAnnule=false;
 $voiture=$_POST['modele'];
 
