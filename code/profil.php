@@ -72,7 +72,8 @@ echo '<div class="card text-center">';
         echo '<div class="card-body">';
             echo '<div class="row">';
             echo '<div class="col-lg-3">';
-            if(file_exists($photo_profil))
+            echo '<img class="" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
+            /*if(file_exists($photo_profil))
             {
                 echo '<img class="" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
             }
@@ -80,6 +81,7 @@ echo '<div class="card text-center">';
             {
                 echo '<img class="" src="/img/logoPhotodeProfil.png" width="100" height="100" alt="Card image cap">';
             }
+            */
 
             echo '</div>';
             echo '<div class="col-lg-9">';
@@ -119,11 +121,12 @@ echo '<br>';
                 echo '<div class="row">';
 
                 echo '<div class="col-lg-9">';
-                echo '<p class="card-title oi oi-clock"> Départ prévu : '.$tabResult[4][$i]['dateheuredepart'].'</p>';
+                echo '<h5 class="card-title oi oi-clock"> Départ prévu : '.$tabResult[4][$i]['dateheuredepart'].'</h5>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
+                echo '<br>';
             }
         }
 
