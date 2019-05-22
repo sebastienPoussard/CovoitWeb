@@ -41,8 +41,8 @@ $_SESSION['dateHeureDepart']=$dateHeureDepart;
  *      si oui on insère le covoiturage dans la BDD
  *      sinon on reviens a la page d'accueil
  */
-echo "<table>";
-        echo "<tr><td colspan=3>Trajet du $dateHeureDepart</td></tr>";
+echo "<table class='table table-hover'>";
+        echo "<tr><th colspan=3>Trajet du $dateHeureDepart</th></tr>";
         echo "<tr><td>départ</td><td>:</td><td>$lieuDepart</td></tr>";
         echo "<tr><td>arrivée</td><td>:</td><td>$lieuArrivee</td></tr>";
         echo "<tr><td>voiture utilisée</td><td>:</td><td>$voiture</td></tr>";
@@ -51,7 +51,7 @@ echo "<table>";
         echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
 
         echo "<form method='POST' action='insertioncovoitBDD.php'>";
-            echo "<tr><td><input type='submit' name='button' value='oui'></td><td></td><td><a href='/index.php' target='_blank'> <input type='button' value='non'> </a></td></tr>";
+            echo "<tr><td><input type='submit' name='button' class='btn btn-info' value='oui'></td><td></td><td><a href='/index.php' target='_blank'> <input type='button' class='btn btn-info' value='non'> </a></td></tr>";
         echo "</form>";
 echo "</table>";
 
