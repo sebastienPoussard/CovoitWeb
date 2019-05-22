@@ -67,6 +67,7 @@ echo "<div class=\"container centered\">";
     echo "<div class=\"row\">";
         echo "<div class=\"col\">";
         echo $photo_profil ;
+
             echo "<table class='table table-hover'>";
                 if(file_exists($photo_profil))
                 {
@@ -74,7 +75,7 @@ echo "<div class=\"container centered\">";
                 }
                 else
                 {
-                    echo "<tr><td rowspan=8> <img src='/img/logoPhotodeProfil.png\'> </td></tr>";
+                    echo "<tr><td rowspan=8> <img src='/img/logoPhotodeProfil.png'> </td></tr>";
                 }
                 echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
                 echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
