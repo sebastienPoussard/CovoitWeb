@@ -4,7 +4,7 @@
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 <?php
 $mail = $_SESSION['identifiant'];
-$photo_profil="\"/user/".$mail.".jpg\"";
+$photo_profil='/user/'.$mail.'.jpg';
 
 /* Différentes requetes:
  * informations d'utilisateur
@@ -74,7 +74,7 @@ echo "<div class=\"container centered\">";
                 }
                 else
                 {
-                    echo "<tr><td rowspan=8> <img src=\"/img/logoPhotodeProfil.png\"> </td></tr>";
+                    echo "<tr><td rowspan=8> <img src='/img/logoPhotodeProfil.png\'> </td></tr>";
                 }
                 echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
                 echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
