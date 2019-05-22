@@ -15,7 +15,7 @@ $photo_profil='/user/'.$_SESSION['identifiant'].'.jpg';
  * les voitures qu'il possède
  */
 $tabreq = array('SELECT * FROM utilisateur WHERE mail = :mail',
-    'SELECT avg(note) as moynote FROM Commentaire WHERE utilisateurcible = :mail',
+    'SELECT avg(note) as moynote FROM reservation WHERE idtrajet IN ( SELECT idtrajet FROM trajet WHERE conducteur = :mail )',
     'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
     'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
     'SELECT * FROM Trajet WHERE conducteur = :mail ORDER BY idtrajet DESC ');
