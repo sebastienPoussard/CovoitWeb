@@ -66,7 +66,7 @@ foreach ($tabreq as $req) {
 echo "<div class=\"container centered\">";
     echo "<div class=\"row\">";
         echo "<div class=\"col\">";
-            echo "<table>";
+            echo "<table class='table table-hover'>";
                 if(file_exists($photo_profil))
                 {
                     echo "<tr><td rowspan=6> <img src=\"/user/".$mail.".jpg\"> </td></tr>";
