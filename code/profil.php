@@ -63,10 +63,50 @@ foreach ($tabreq as $req) {
  * on lui permet d'accéder a un formulaire pour ajouter une nouvelle voiture
  */
 
+
+
+echo '<div class="card text-center">';
+    echo '<div class="card-header ">';
+        echo 'Profil de'.$mail;
+    echo '</div>';
+        echo '<div class="card-body">';
+            echo '<div class="row">';
+            echo '<div class="col-lg-3">';
+            if(file_exists($photo_profil))
+            {
+                echo '<img class="" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
+            }
+            else
+            {
+                echo '<img class="" src="/img/logoPhotodeProfil.png" width="100" height="100" alt="Card image cap">';
+            }
+
+            echo '</div>';
+            echo '<div class="col-lg-9">';
+                echo '<p class="card-text">Nom & Prénom : '.$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser'].'</p>';
+                echo '<p class="card-text">Note : '.round($tabResult[1][0]['moynote'],2).'</p>';
+                echo '<p class="card-text">Nombre de trajets demandés : '.$tabResult[2][0]['nbdemandes'].'</p>';
+                echo '<p class="card-text">Nombre de trajets conduits : '.$tabResult[3][0]['nbtrajet'].'</p>';
+                echo '<p class="card-text">Voiture(s) : ';
+                    while($resultTest=$isAuthTest->fetch())
+                    {
+                        echo $resultTest['marque'].", ";
+                    }
+                echo '</p>';
+                echo '<p class="card-text">Ajouter une voiture? <a href=\'ajoutVoiture.php\'>ICI</a></p>';
+                echo '<p class="card-text">'.$tabResult[0][0]['description'].'</p>';
+            echo '</div>';
+        echo '</div>';
+    echo '</div>';
+echo '</div>';
+
+echo '<br>';
+
+
+
+
 echo "<div class=\"container centered\">";
     echo "<div class=\"row\">";
-
-        echo $photo_profil ;
         if(file_exists($photo_profil))
         {
             echo "<div class='col'> <img class='rounded img-fluid' src=".$photo_profil."> </div>";
