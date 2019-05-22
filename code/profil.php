@@ -105,50 +105,35 @@ echo '<br>';
 
 
 
-echo "<div class=\"container centered\">";
-    echo "<div class=\"row\">";
-        if(file_exists($photo_profil))
-        {
-            echo "<div class='col'> <img class='rounded img-fluid' src=".$photo_profil."> </div>";
-        }
-        else
-        {
-            echo "<div class='col'> <img src='/img/logoPhotodeProfil.png'> </div>";
-        }
-        echo "<div class=\"col\">";
-            echo "<table class='table table-hover'>";
 
-                echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
-                echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
-                echo "<tr><td>nombre de trajets demandés: ".$tabResult[2][0]['nbdemandes']."</td></tr>";
-                echo "<tr><td>nombre de trajets conduits : ".$tabResult[3][0]['nbtrajet']."</td></tr>";
-                echo "<tr><td>voiture(s) : ";
-                while($resultTest=$isAuthTest->fetch())
-                {
-                    echo $resultTest['marque'].", ";
-                }
-                echo "</td></tr>";
-                echo "<tr><td>ajouter une voiture ? <a href='ajoutVoiture.php'>ICI</a></td></tr>";
-            echo "</table>";
-        echo "<p>".$tabResult[0][0]['description']."</p>";
-        echo "</div>";
-    echo "</div>";
-echo "</div>";
 
 /* on affiche les trois derniers trajets qu'il a conduit par ordre de nouveauté
  * on y met le point de départ -> le point d'arrivée
  * la date et l'heure de départ
  */
+
+
+
+
 echo "<div class=\"container\">";
     echo "<div class=\"row\">";
         for($i=0;$i<3;$i++)
         {
             if(!empty($tabResult[4][$i]['pointdepart']))
             {
-                echo "<div class=\"col-4\">";
-                echo "Covoiturage : ".$tabResult[4][$i]['pointdepart']."->".$tabResult[4][$i]['pointarrivee']."<br>";
-                echo "le ".$tabResult[4][$i]['dateheuredepart']."<br>";
-                echo "</div>";
+                echo '<div class="card text-center">';
+                echo '<div class="card-header oi oi-flag">';
+                echo 'Trajet de '.$tabResult[4][$i]['pointdepart'].' à '.$tabResult[4][$i]['pointarrivee'];
+                echo '</div>';
+                echo '<div class="card-body">';
+                echo '<div class="row">';
+
+                echo '<div class="col-lg-9">';
+                echo '<h5 class="card-title oi oi-clock"> Départ prévu : '.$tabResult[4][$i]['dateheuredepart'].'</h5>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
             }
         }
     echo "</div>";
