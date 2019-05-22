@@ -13,7 +13,7 @@ $nomUtilisateur = $res[0]['prenomuser'];
   </button>
   <!-- la "marque" du site, correspond au logo -->
   <a class="navbar-brand" href="/index.php">
-    <img src="/img/logo.png" width="80" height="80" alt="logo QuietCar">
+    <img src="/img/logo.png" width="90" height="55" alt="logo QuietCar">
   </a>
   <!-- les éléments de la barre de navigation -->
   <div class="collapse navbar-collapse" id="navbarNav">
