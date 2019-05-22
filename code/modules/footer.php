@@ -8,7 +8,7 @@
         </a>
       </div>
       <div class="col-lg-3 text-center">
-        <!-- information au centre ? -->
+        <img src="http://www.gala-stri.net/images/stri_logo.png" alt="" width="100" height="30">
       </div>
       <div class="col-lg-6 text-right">
         <a class="oi oi-code d-inline-block" href="https://github.com/Qlaus">
