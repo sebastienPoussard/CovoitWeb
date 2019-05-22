@@ -22,6 +22,7 @@ if ($_SESSION['identifiant']) {
                         WHERE mail = :mail;');
   $req->execute(array('mail'=> $_SESSION['identifiant']));
   $res = $req->fetchAll(PDO::FETCH_ASSOC);
+
   // parcourir l'ensemble des trajets.
   foreach ($res as $trajet) {
     // recuperer les informations sur le trajet.
@@ -35,11 +36,11 @@ if ($_SESSION['identifiant']) {
     $reqConf = $bdd->prepare('SELECT * FROM reservation
                               WHERE mail = :mail
                               AND idtrajet = :idtrajet;');
-    $toto = $reqConf->execute(array('idtrajet'=> $trajet['idtrajet'],
+    $reqConf->execute(array('idtrajet'=> $trajet['idtrajet'],
                             'mail'=> $_SESSION['identifiant']));
     $reqConf = $reqConf->fetchAll(PDO::FETCH_ASSOC);
     $reqConf[0]['estaccepte'];
-    if ($reqConf[0]['estaccepte'] && $reqConf[0]['estvalide']) {
+    if ($reqConf[0]['estvalide']) {
       // convertir la date en format fr
       $datefr = strftime("%d/%m/%Y à %H:%M",strtotime($res2[0]['dateheuredepart']));
 
