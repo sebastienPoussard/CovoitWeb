@@ -27,7 +27,6 @@ if ($_SESSION['identifiant'] && isset($_POST['idtrajetcancel'])) {
 if ($_SESSION['identifiant']) {
   echo '<br><H1 class="oi oi-book d-flex justify-content-center"></H1><H3 class="text-center">Mes trajets proposés</H3>';
   $ladate = date("Y-m-j").' '.date("H:i",time()+60*60*2);
-  var_dump($ladate);
   // récuperer les trajets proposés de l'utilisateur.
   $req = $bdd->prepare('SELECT * FROM trajet
                         WHERE conducteur = :mail
