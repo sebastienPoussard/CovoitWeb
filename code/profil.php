@@ -102,21 +102,11 @@ echo '</div>';
 
 echo '<br>';
 
-
-
-
-
-
 /* on affiche les trois derniers trajets qu'il a conduit par ordre de nouveauté
  * on y met le point de départ -> le point d'arrivée
  * la date et l'heure de départ
  */
 
-
-
-
-echo "<div class=\"container\">";
-    echo "<div class=\"row\">";
         for($i=0;$i<3;$i++)
         {
             if(!empty($tabResult[4][$i]['pointdepart']))
@@ -129,15 +119,14 @@ echo "<div class=\"container\">";
                 echo '<div class="row">';
 
                 echo '<div class="col-lg-9">';
-                echo '<h5 class="card-title oi oi-clock"> Départ prévu : '.$tabResult[4][$i]['dateheuredepart'].'</h5>';
+                echo '<p class="card-title oi oi-clock"> Départ prévu : '.$tabResult[4][$i]['dateheuredepart'].'</p>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
             }
         }
-    echo "</div>";
-echo "</div>";
+
 ?>
 
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritFin.php'; ?>
