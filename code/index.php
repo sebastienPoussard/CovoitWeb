@@ -17,15 +17,16 @@ while($result=$request->fetch())
         echo '<div class="card-body">';
             echo '<div class="row">';
                 echo '<div class="col-lg-3">';
-                if(file_exists($photo_profil))
-                {
-                    echo '<img class="" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
-                }
-                else
-                {
-                    echo '<img class="" src="/img/logoPhotodeProfil.png" width="100" height="100" alt="Card image cap">';
-                }
-
+                    echo '<img class="img-fluid" src='.$photo_profil.' width="100%" height="100%" alt="Card image cap">';
+                    /*if(file_exists($photo_profil))
+                    {
+                        echo '<img class="" src='.$photo_profil.' width="100" height="100" alt="Card image cap">';
+                    }
+                    else
+                    {
+                        echo '<img class="" src="/img/logoPhotodeProfil.png" width="100" height="100" alt="Card image cap">';
+                    }
+                    */
                 echo '</div>';
                 echo '<div class="col-lg-9">';
                     echo '<h5 class="card-title oi oi-clock"> Départ prévu : '.$result['dateheuredepart'].'</h5>';
