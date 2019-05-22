@@ -3,31 +3,11 @@
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 
 <?php
-// si la page est accédé pour accepter la participation d'un utilisateurs
-// au covoiturage
-if ($_SESSION['identifiant'] && isset($_POST['iduser']) && isset($_POST['idtrajet'])) {
-  $req0 = $bdd->prepare('UPDATE reservation
-                        SET estaccepte = true
-                        WHERE mail = :mail
-                        AND idtrajet = :idTrajet');
-  $toto = $req0->execute(array('idTrajet'=> $_POST['idtrajet'],
-                       'mail'=> $_POST['iduser']));
-}
-
-// si la page est accédé pour annuler un covoiturage.
-if ($_SESSION['identifiant'] && isset($_POST['idtrajetcancel'])) {
-  $req4 = $bdd->prepare('UPDATE trajet
-                        SET estannule = true
-                        WHERE idtrajet = :idTrajet');
-  $req4->execute(array('idTrajet'=> $_POST['idtrajetcancel']));
-}
-
-
 // verifier que l'utilisateur est identifié pour acceder à cette page.
 if ($_SESSION['identifiant']) {
-  echo '<H3 class="text-center">Mes trajets proposés</H3>';
+  echo '<H3 class="text-center">Mon historique de trajets réalisés en tant que conducteur</H3>';
   $ladate = date("Y-m-j").' '.date("H:i",time()+60*60*2);
-  // récuperer les reservations de l'utilisateur.
+  // récuperer les trajets passés de l'utilisateur
   $req = $bdd->prepare('SELECT * FROM trajet
                         WHERE conducteur = :mail
                         AND dateheuredepart < :ladate
@@ -61,7 +41,7 @@ if ($_SESSION['identifiant']) {
       </div>
       <div class="card-body">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-info">
+        <li class="list-group-item list-group-item-secondary">
           <h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>
           <p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>';
     echo '<p class="card-text">Reservations : '.$nbReservation.'/'.$nbPassagersMax.'</p>';
@@ -82,48 +62,29 @@ if ($_SESSION['identifiant']) {
     $res2 = $req2->fetchAll(PDO::FETCH_ASSOC);
     if ($res2) {
       echo '
-        <li class="list-group-item list-group-item-success">
-          <H4 class="text-center">Utilisateurs confirmés participant au covoiturage </H4>';
-      // afficher tous les utilisateurs participants au covoiturage.
+        <li class="list-group-item list-group-item-secondary">
+          <H4 class="text-center">Ce que les participants ont pensés de ce covoiturage</H4>';
+      // afficher tous les utilisateurs qui ont participés au covoiturage.
       foreach ($res2 as $utilisateur) {
         echo '<p class="oi oi-check d-block"> '.$utilisateur['prenomuser']." ".$utilisateur['nomuser']." (".$utilisateur['mail'].")</p> ";
+        echo '<p class="d-block">note attribué par l\'utilisateur : ';
+        // récuperer la note et le commentaire de l'utilisateur
+        $reqUser = $bdd->prepare('SELECT * FROM reservation
+                                  WHERE mail = :mail
+                                  AND idtrajet = :idtrajet
+                                  ;');
+        $reqUser->execute(array('idtrajet'=> $trajet['idtrajet'],
+                                'mail' => $utilisateur['mail']
+                                ));
+        $resUser = $reqUser->fetchAll(PDO::FETCH_ASSOC);
+        echo $resUser[0]['note'].'/10</p> ';
+        echo '<p class="d-block">commentaire laissé par l\'utilisateur : ';
+        echo $resUser[0]['commentaire'].'</p> ';
       }
       echo '</li>';
     }
-    // recuperer la liste des utilisateur souhaitant participer au covoiturage.
-    $req3 = $bdd->prepare('SELECT * FROM utilisateur
-                  LEFT JOIN reservation ON reservation.mail = utilisateur.mail
-                  WHERE reservation.idtrajet = :idtrajet
-                  AND estaccepte = FALSE
-                  AND estvalide = TRUE;');
-    $toto = $req3->execute(array('idtrajet'=> $trajet['idtrajet']));
-    $res3 = $req3->fetchAll(PDO::FETCH_ASSOC);
-    // afficher les utilisateurs souhaitant participer au covoiturage.
-    if ($res3) {
-      echo '
-        <li class="list-group-item list-group-item-warning">
-          <H4 class="text-center">les utilisateurs suivant souhaitent rejoindre ce covoiturage
-          et attendent votre acceptation</H4>';
-    }
-    foreach ($res3 as $utilisateur) {
-      echo '<p class="oi oi-question-mark d-inline"> '.$utilisateur['prenomuser']." ".$utilisateur['nomuser']." (".$utilisateur['mail'].")</p> ";
-      echo '<form class="d-inline" action="mes_trajets_proposes.php" method="post">';
-      echo '    <input type="text" name="iduser" value="'.$utilisateur['mail'].'" hidden>';
-      echo '    <input type="text" name="idtrajet" value="'.$trajet['idtrajet'].'" hidden>';
-      echo '    <input class="btn btn-success btn-sm" type="submit" name="" value="Accepter la participation">';
-      echo '</form>';
-      echo "</p>";
-    }
-    echo '</li>';
-    // annulation du covoiturage
     echo '
         </ul>
-      </div>
-      <div class="card-footer text-muted">
-        <form class="" action="mes_trajets_proposes.php" method="post">
-        <input type="text" name="idtrajetcancel" value="'.$trajet['idtrajet'].'" hidden>
-        <input class="btn btn-outline-danger" type="submit" name="" value="Annuler ce covoiturage">
-        </form>
       </div>
     </div>
     <br>';
