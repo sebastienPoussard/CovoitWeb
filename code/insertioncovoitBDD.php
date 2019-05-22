@@ -32,11 +32,15 @@ if(isset($_POST['button'])) //s'active a la validation
     //si la requete fonctionne on envoie un message indiquant que tout s'est bien passé
     if($isAuthTest)
     {
+        echo '<div class="alert alert-primary" role="alert" >';
         echo "votre covoiturage a bien été enregistré!";
+        echo '</div>';
     }
     else
     {
+        echo '<div class="alert alert-danger" role="alert" >';
         echo "oops, il y a eu un problème!";
+        echo '</div>';
     }
 
 }

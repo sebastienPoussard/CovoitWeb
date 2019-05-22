@@ -51,7 +51,7 @@ echo "<table class='table table-hover'>";
         echo "<tr><td colspan=3>Confirmez vous ce nouveau covoiturage?</td></tr>";
 
         echo "<form method='POST' action='insertioncovoitBDD.php'>";
-            echo "<tr><td><input type='submit' name='button' class='btn btn-info' value='oui'></td><td></td><td><a href='/index.php' target='_blank'> <input type='button' class='btn btn-info' value='non'> </a></td></tr>";
+            echo "<tr><td><input type='submit' name='button' class='btn btn-info' size='100%' value='oui'></td><td></td><td><a href='/index.php' target='_blank'> <input type='button' class='btn btn-info' size='100%' value='non'> </a></td></tr>";
         echo "</form>";
 echo "</table>";
 
