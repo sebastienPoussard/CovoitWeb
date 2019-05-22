@@ -66,11 +66,11 @@ foreach ($tabreq as $req) {
 echo "<div class=\"container centered\">";
     echo "<div class=\"row\">";
         echo "<div class=\"col\">";
-        echo "/user/".$mail.".jpg " ;
+        echo $photo_profil ;
             echo "<table class='table table-hover'>";
                 if(file_exists($photo_profil))
                 {
-                    echo "<tr><td rowspan=8> <img class='rounded img-fluid' src=\"/user/".$mail.".jpg\"> </td></tr>";
+                    echo "<tr><td rowspan=8> <img class='rounded img-fluid' src=".$photo_profil."> </td></tr>";
                 }
                 else
                 {
