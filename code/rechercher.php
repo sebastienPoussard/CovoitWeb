@@ -1,6 +1,5 @@
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritDebut.php'; ?>
 <!-- insérer la balise pour utiliser le CSS ici -->
-<?php require $_SERVER["DOCUMENT_ROOT"].'/css/main.css'; ?>
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
 
 <?php
@@ -13,11 +12,15 @@ $nombreBagage = $_POST['bagages'];
 // requete dans la BDD pour récuperer les trajets demandés
 // qui ne sont pas déjà reservés et dont l'utilisateur n'est pas conducteur
 // et dont le conducteur n'a pas annulé le trajet
+// et donc la date est supérieur à la date donné en parametre
+$ladate = $dateDepart." ".$heureDepart.":00";
+var_dump($ladate);
 $reqRechercher = $bdd->prepare('SELECT * FROM trajet
                                 WHERE pointdepart=:lieuDepart
                                 AND pointarrivee=:lieuArrivee
                                 AND conducteur != :idconducteur
                                 AND estannule = false
+                                AND dateheuredepart > :ladate
                                 AND idtrajet NOT IN (
                                   SELECT idtrajet FROM reservation
                                   WHERE mail = :mail
@@ -27,7 +30,8 @@ $reqRechercher->execute(
         "lieuDepart" => $lieuDepart,
         "lieuArrivee" => $lieuArrivee,
         "idconducteur" => $_SESSION['identifiant'],
-        "mail" => $_SESSION['identifiant']
+        "mail" => $_SESSION['identifiant'],
+        "ladate" => $ladate
     )
 ) or die(print_r($bdd->errorInfo()));
 

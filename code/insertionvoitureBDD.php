@@ -9,11 +9,11 @@
  * Time: 23:04
  */
 
-if(isset($_POST['valider']))
+if(isset($_POST['valider'])) //s'active a la validation
 {
+    //on insère dans la BDD les informations concernant la nouvelle voiture
 
     $reqTest= 'INSERT INTO voiture VALUES( :matricule , :marque , :modele, :maxbagages, :maxpassagers, :proprietaire)';
-    //'.$_SESSION['$idtrajet'].','.$_SESSION['$lieuDepart'].','.$_SESSION['$lieuArrivee'].','.$_SESSION['$dateHeureDepart'].','.$_SESSION['identifiant'].')');
 
     // Prepare and execute the query
     $isAuthTest = $bdd->prepare($reqTest);
@@ -27,6 +27,8 @@ if(isset($_POST['valider']))
             'proprietaire' => $_SESSION['identifiant']
         )
     );
+
+    //si la requete fonctionne on envoie un message indiquant que tout s'est bien passé
     if($isAuthTest)
     {
         echo "votre voiture a bien été enregistrée!";
