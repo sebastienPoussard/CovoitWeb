@@ -8,14 +8,14 @@ $mail = $_SESSION['identifiant'];
  * marque, modele, matricule ,maximum de bagages, maximum de passagers
  */
 echo "<form method='post' action='insertionvoitureBDD.php' enctype='multipart/form-data'>";
-    echo "<table>";
-        echo "<tr> <td> Nouvelle voiture de : </td><td> $mail </td> </tr>";
-        echo "<tr> <td><input type='text' name='marque' placeholder='Marque' required class='form-control'></td> </tr>";
-        echo "<tr> <td><input type='text' name='modele' placeholder='Modèle' required class='form-control'></td> </tr>";
-        echo "<tr> <td><input type='text' name='matricule' placeholder='Matricule' required class='form-control'></td> </tr>";
-        echo "<tr> <td><input type='number' name='maxbagages' min='1' max='50' placeholder='Max. bagages' required class='form-control'></td> </tr>";
-        echo "<tr> <td><input type='number' name='maxpassagers' min='1' max='50' placeholder='Max. passagers' required class='form-control'></td> </tr>";
-        echo "<tr> <td> <input type='submit' class='btn btn-info' name='valider' value='Ajouter' id='button'> </td> </tr>";
+    echo "<table class='table table-hover'>";
+        echo "<tr> <th> Nouvelle voiture de : </th><th> $mail </th> </tr>";
+        echo "<tr> <td colspan='2'><input type='text' name='marque' placeholder='Marque' required class='form-control'></td> </tr>";
+        echo "<tr> <td colspan='2'><input type='text' name='modele' placeholder='Modèle' required class='form-control'></td> </tr>";
+        echo "<tr> <td colspan='2'><input type='text' name='matricule' placeholder='Matricule' required class='form-control'></td> </tr>";
+        echo "<tr> <td colspan='2'><input type='number' name='maxbagages' min='1' max='50' placeholder='Max. bagages' required class='form-control'></td> </tr>";
+        echo "<tr> <td colspan='2'><input type='number' name='maxpassagers' min='1' max='50' placeholder='Max. passagers' required class='form-control'></td> </tr>";
+        echo "<tr> <td colspan='2'> <input type='submit' class='btn btn-info' name='valider' value='Ajouter' id='button'> </td> </tr>";
     echo "</table>";
 echo "</form>";
 
