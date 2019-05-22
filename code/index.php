@@ -10,17 +10,17 @@ while($result=$request->fetch())
 {
     echo '<div class="card text-center">';
         echo '<div class="card-header oi oi-flag">';
-            echo 'Trajet de '.$trajet['pointdepart'].' à '.$trajet['pointarrivee'].;
+            echo 'Trajet de '.$result['pointdepart'].' à '.$result['pointarrivee'];
         echo '</div>';
         echo '<div class="card-body">';
             echo '<div class="row">';
                 echo '<div class="col-lg-3">';
-                    echo '<img class="" src="/user/'.$trajet['conducteur'].'.jpg" width="100" height="100" alt="Card image cap">';
+                    echo '<img class="" src="/user/'.$result['conducteur'].'.jpg" width="100" height="100" alt="Card image cap">';
                 echo '</div>';
                 echo '<div class="col-lg-9">';
-                    echo '<h5 class="card-title oi oi-clock"> Départ prévue : '.$datefr.'</h5>';
-                    echo '<p class="card-text">Immatriculation du véhicule : '.$trajet['idvoiture'].'</p>';
-                    echo '<p class="card-text oi oi-envelope-closed"> Conducteur : '.$trajet['conducteur'].'</p>';
+                    echo '<h5 class="card-title oi oi-clock"> Départ prévue : '.$result['dateheuredepart'].'</h5>';
+                    echo '<p class="card-text">Immatriculation du véhicule : '.$result['idvoiture'].'</p>';
+                    echo '<p class="card-text oi oi-envelope-closed"> Conducteur : '.$result['conducteur'].'</p>';
                 echo '</div>';
             echo '</div>';
         echo '</div>';
