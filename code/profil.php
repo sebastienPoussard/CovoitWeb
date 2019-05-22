@@ -2,7 +2,9 @@
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
 <?php require $_SERVER["DOCUMENT_ROOT"].'/modules/gabaritMillieu.php'; ?>
-<?php require 'function.php';
+<?php
+$mail = $_SESSION['identifiant'];
+$photo_profil="\"/user/".$mail.".jpg\"";
 
 // Query
 $tabreq = array('SELECT * FROM utilisateur WHERE mail = :mail',
@@ -10,6 +12,30 @@ $tabreq = array('SELECT * FROM utilisateur WHERE mail = :mail',
     'SELECT count(IDTrajet) as nbdemandes FROM reservation WHERE mail = :mail',
     'SELECT count(IDTrajet) as nbtrajet FROM Trajet WHERE conducteur = :mail',
     'SELECT * FROM Trajet WHERE conducteur = :mail');
+
+$reqTest= 'SELECT marque FROM voiture WHERE proprietaire = :mail';// Prepare and execute the query
+$isAuthTest = $bdd->prepare($reqTest);
+$isAuthTest->execute(
+    array(
+        'mail' => $mail
+    )
+);
+
+
+$tabResult = array();
+
+foreach ($tabreq as $req) {
+
+    // Prepare and execute the query
+    $isAuth = $bdd->prepare($req);
+    $isAuth->execute(
+        array(
+            'mail' => $mail
+        )
+    );
+    array_push($tabResult, $isAuth->fetchAll());
+}
+
 
 ?>
 </head>
