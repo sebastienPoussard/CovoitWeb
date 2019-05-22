@@ -66,14 +66,15 @@ foreach ($tabreq as $req) {
 echo "<div class=\"container centered\">";
     echo "<div class=\"row\">";
         echo "<div class=\"col\">";
+        echo "/user/".$mail.".jpg " ;
             echo "<table class='table table-hover'>";
                 if(file_exists($photo_profil))
                 {
-                    echo "<tr><td rowspan=5> <img class='rounded img-fluid' src=\"/user/".$mail.".jpg\"> </td></tr>";
+                    echo "<tr><td rowspan=8> <img class='rounded img-fluid' src=\"/user/".$mail.".jpg\"> </td></tr>";
                 }
                 else
                 {
-                    echo "<tr><td rowspan=5> <img src=\"/img/logoPhotodeProfil.png\"> </td></tr>";
+                    echo "<tr><td rowspan=8> <img src=\"/img/logoPhotodeProfil.png\"> </td></tr>";
                 }
                 echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
                 echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
