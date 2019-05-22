@@ -86,6 +86,7 @@ echo "<div class=\"container centered\">";
                 }
                 echo "</td></tr>";
                 echo "<tr><td>ajouter une voiture ?</td><td><a href='ajoutVoiture.php'>ICI</a></td> </tr>";
+                echo "<tr><td rowspan='2'><textarea readonly='readonly' rows='2'>".$tabResult[0][0]['description']."</textarea></td></tr>";
             echo "</table>";
         echo "</div>";
     echo "</div>";
