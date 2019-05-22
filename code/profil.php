@@ -73,7 +73,7 @@ echo "<div class=\"container centered\">";
                 }
                 else
                 {
-                    echo "<tr><td rowspan=6> <img src=\"/img/logoPhotodeProfil.png\"> </td></tr>";
+                    echo "<tr><td rowspan=8> <img src=\"/img/logoPhotodeProfil.png\"> </td></tr>";
                 }
                 echo "<tr><td>nom, prenom : ".$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser']."</td></tr>";
                 echo "<tr><td>note : ".round($tabResult[1][0]['moynote'],2)."</td></tr>";
@@ -85,9 +85,9 @@ echo "<div class=\"container centered\">";
                     echo $resultTest['marque'].", ";
                 }
                 echo "</td></tr>";
-                echo "<tr><td>ajouter une voiture ?</td><td><a href='ajoutVoiture.php'>ICI</a></td> </tr>";
-                echo "<tr><td rowspan='2'><textarea readonly='readonly' rows='2'>".$tabResult[0][0]['description']."</textarea></td></tr>";
+                echo "<tr><td>ajouter une voiture ? <a href='ajoutVoiture.php'>ICI</a></td></tr>";
             echo "</table>";
+        echo "<p>".$tabResult[0][0]['description']."</p>";
         echo "</div>";
     echo "</div>";
 echo "</div>";
