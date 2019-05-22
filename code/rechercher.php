@@ -14,7 +14,6 @@ $nombreBagage = $_POST['bagages'];
 // et dont le conducteur n'a pas annulé le trajet
 // et donc la date est supérieur à la date donné en parametre
 $ladate = $dateDepart." ".$heureDepart.":00";
-var_dump($ladate);
 $reqRechercher = $bdd->prepare('SELECT * FROM trajet
                                 WHERE pointdepart=:lieuDepart
                                 AND pointarrivee=:lieuArrivee
