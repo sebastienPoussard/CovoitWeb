@@ -6,6 +6,7 @@
 $sql= 'SELECT * FROM trajet ORDER BY idtrajet DESC ';// Prepare and execute the query
 $request = $bdd->prepare($sql);
 $request->execute();
+echo '<br><H3 class="text-center">Voici les derniers covoiturages proposés sur la plateforme<H3><br>';
 while($result=$request->fetch())
 {
     $photo_profil='/user/'.$result['conducteur'].'.jpg';
