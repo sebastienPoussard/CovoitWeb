@@ -71,9 +71,9 @@ echo '<div class="card text-center">';
     echo '</div>';
         echo '<div class="card-body">';
             echo '<div class="row">';
-            echo '<div class="col-lg-3">';
-            echo '<img class="img-fluid" src='.$photo_profil.' width="100%" height="100%" alt="Card image cap">';
-            echo '</div>';
+              echo '<div class="col-lg-3">';
+                echo '<img class="img-fluid" src='.$photo_profil.' width="100%" height="100%" alt="Card image cap">';
+              echo '</div>';
             echo '<div class="col-lg-9">';
                 echo '<p class="card-text">Nom & Prénom : '.$tabResult[0][0]['nomuser']." ".$tabResult[0][0]['prenomuser'].'</p>';
                 echo '<p class="card-text">Note moyenne : '.round($tabResult[1][0]['moynote'],2).'</p>';
@@ -86,9 +86,14 @@ echo '<div class="card text-center">';
                     }
                 echo '</p>';
                 echo '<p class="card-text"><a href=\'ajoutVoiture.php\'><button id="button" class="btn btn-info"> Ajouter une voiture</button></a></p>';
-                echo '<p class="card-text">'.$tabResult[0][0]['description'].'</p>';
+                echo '<p class="card-text">Description'.$tabResult[0][0]['description'].'</p>';
             echo '</div>';
         echo '</div>';
+        echo '
+        <div class="card-footer text-muted">
+          <a href=changer_motDePasse.php class="btn btn-danger" id="buttonI">Changer mon mot de passe !</a>
+        </div>
+        ';
     echo '</div>';
 echo '</div>';
 

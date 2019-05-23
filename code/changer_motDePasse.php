@@ -1,8 +1,6 @@
 <?php require $_SERVER["DOCUMENT_ROOT"] . '/modules/gabaritDebut.php'; ?>
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="../open-iconic/font/css/open-iconic-bootstrap.css">
+
 <?php require $_SERVER["DOCUMENT_ROOT"] . '/modules/gabaritMillieu.php'; ?>
-<?php require 'modules/cobdd.php' ?>
     <head>
         <title>Changez votre mot de passe</title>
         <link rel="stylesheet" type="text/css" href="main.css">
